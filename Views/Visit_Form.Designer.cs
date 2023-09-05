@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label_visits = new Label();
-            panel_visits_title = new Panel();
             tabControl_visits_form = new TabControl();
             tabPage_visit_list = new TabPage();
             dataGridView_visits_pets = new DataGridView();
@@ -40,6 +38,7 @@
             button_visit_edit = new Button();
             button_visit_add_new_visit = new Button();
             tabPage_visit_details = new TabPage();
+            button_visit_edit_pet = new Button();
             comboBox_visit_pet_id = new ComboBox();
             numericUpDown_visit_id = new NumericUpDown();
             dateTimePicker_visit_date = new DateTimePicker();
@@ -52,8 +51,6 @@
             label_visit_type = new Label();
             label_visit_pet_id = new Label();
             label_visit_id = new Label();
-            button_visit_edit_pet = new Button();
-            panel_visits_title.SuspendLayout();
             tabControl_visits_form.SuspendLayout();
             tabPage_visit_list.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_visits_pets).BeginInit();
@@ -61,34 +58,15 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown_visit_id).BeginInit();
             SuspendLayout();
             // 
-            // label_visits
-            // 
-            label_visits.AutoSize = true;
-            label_visits.Location = new Point(40, 29);
-            label_visits.Name = "label_visits";
-            label_visits.Size = new Size(34, 15);
-            label_visits.TabIndex = 0;
-            label_visits.Text = "Visits";
-            // 
-            // panel_visits_title
-            // 
-            panel_visits_title.BackColor = Color.White;
-            panel_visits_title.Controls.Add(label_visits);
-            panel_visits_title.Dock = DockStyle.Top;
-            panel_visits_title.Location = new Point(0, 0);
-            panel_visits_title.Name = "panel_visits_title";
-            panel_visits_title.Size = new Size(1147, 65);
-            panel_visits_title.TabIndex = 2;
-            // 
             // tabControl_visits_form
             // 
             tabControl_visits_form.Controls.Add(tabPage_visit_list);
             tabControl_visits_form.Controls.Add(tabPage_visit_details);
             tabControl_visits_form.Dock = DockStyle.Fill;
-            tabControl_visits_form.Location = new Point(0, 65);
+            tabControl_visits_form.Location = new Point(0, 0);
             tabControl_visits_form.Name = "tabControl_visits_form";
             tabControl_visits_form.SelectedIndex = 0;
-            tabControl_visits_form.Size = new Size(1147, 615);
+            tabControl_visits_form.Size = new Size(1147, 680);
             tabControl_visits_form.TabIndex = 3;
             // 
             // tabPage_visit_list
@@ -103,7 +81,7 @@
             tabPage_visit_list.Location = new Point(4, 24);
             tabPage_visit_list.Name = "tabPage_visit_list";
             tabPage_visit_list.Padding = new Padding(3);
-            tabPage_visit_list.Size = new Size(1139, 587);
+            tabPage_visit_list.Size = new Size(1139, 652);
             tabPage_visit_list.TabIndex = 0;
             tabPage_visit_list.Text = "Visit List";
             tabPage_visit_list.UseVisualStyleBackColor = true;
@@ -114,7 +92,7 @@
             dataGridView_visits_pets.AllowUserToDeleteRows = false;
             dataGridView_visits_pets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_visits_pets.Dock = DockStyle.Bottom;
-            dataGridView_visits_pets.Location = new Point(3, 160);
+            dataGridView_visits_pets.Location = new Point(3, 225);
             dataGridView_visits_pets.Name = "dataGridView_visits_pets";
             dataGridView_visits_pets.ReadOnly = true;
             dataGridView_visits_pets.RowTemplate.Height = 25;
@@ -196,6 +174,15 @@
             tabPage_visit_details.TabIndex = 1;
             tabPage_visit_details.Text = "Visit Details";
             tabPage_visit_details.UseVisualStyleBackColor = true;
+            // 
+            // button_visit_edit_pet
+            // 
+            button_visit_edit_pet.Location = new Point(205, 187);
+            button_visit_edit_pet.Name = "button_visit_edit_pet";
+            button_visit_edit_pet.Size = new Size(75, 23);
+            button_visit_edit_pet.TabIndex = 35;
+            button_visit_edit_pet.Text = "Edit Pet";
+            button_visit_edit_pet.UseVisualStyleBackColor = true;
             // 
             // comboBox_visit_pet_id
             // 
@@ -296,26 +283,14 @@
             label_visit_id.TabIndex = 19;
             label_visit_id.Text = "Visit ID";
             // 
-            // button_visit_edit_pet
-            // 
-            button_visit_edit_pet.Location = new Point(205, 187);
-            button_visit_edit_pet.Name = "button_visit_edit_pet";
-            button_visit_edit_pet.Size = new Size(75, 23);
-            button_visit_edit_pet.TabIndex = 35;
-            button_visit_edit_pet.Text = "Edit Pet";
-            button_visit_edit_pet.UseVisualStyleBackColor = true;
-            // 
             // Visit_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1147, 680);
             Controls.Add(tabControl_visits_form);
-            Controls.Add(panel_visits_title);
             Name = "Visit_Form";
             Text = "Visit_Form";
-            panel_visits_title.ResumeLayout(false);
-            panel_visits_title.PerformLayout();
             tabControl_visits_form.ResumeLayout(false);
             tabPage_visit_list.ResumeLayout(false);
             tabPage_visit_list.PerformLayout();
@@ -327,8 +302,6 @@
         }
 
         #endregion
-        private Label label_visits;
-        private Panel panel_visits_title;
         private TabControl tabControl_visits_form;
         private TabPage tabPage_visit_list;
         private TabPage tabPage_visit_details;

@@ -59,6 +59,7 @@ namespace Veterinary_CRUD_App
             services.AddSingleton<Pet_Form>();
             services.AddSingleton<Owner_Form>();
             services.AddSingleton<Visit_Form>();
+            services.AddSingleton<Homepage>();
 
             // Registering repositories. This allows the application to switch data storage strategies without changing the rest of the app.
             services.AddSingleton<IPet_Repository_Interface, Pet_Repository>();

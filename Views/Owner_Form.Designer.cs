@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label_owner = new Label();
-            panel_owner_title = new Panel();
             tabControl_owner_form = new TabControl();
             tabPage_owners = new TabPage();
             button_owner_search = new Button();
@@ -54,7 +52,6 @@
             textBox_owner_name = new TextBox();
             label_owner_name = new Label();
             label_owner_id = new Label();
-            panel_owner_title.SuspendLayout();
             tabControl_owner_form.SuspendLayout();
             tabPage_owners.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_owners).BeginInit();
@@ -63,34 +60,15 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown_owner_id).BeginInit();
             SuspendLayout();
             // 
-            // label_owner
-            // 
-            label_owner.AutoSize = true;
-            label_owner.Location = new Point(40, 29);
-            label_owner.Name = "label_owner";
-            label_owner.Size = new Size(42, 15);
-            label_owner.TabIndex = 0;
-            label_owner.Text = "Owner";
-            // 
-            // panel_owner_title
-            // 
-            panel_owner_title.BackColor = Color.White;
-            panel_owner_title.Controls.Add(label_owner);
-            panel_owner_title.Dock = DockStyle.Top;
-            panel_owner_title.Location = new Point(0, 0);
-            panel_owner_title.Name = "panel_owner_title";
-            panel_owner_title.Size = new Size(1115, 65);
-            panel_owner_title.TabIndex = 2;
-            // 
             // tabControl_owner_form
             // 
             tabControl_owner_form.Controls.Add(tabPage_owners);
             tabControl_owner_form.Controls.Add(tabPage_owner_details);
             tabControl_owner_form.Dock = DockStyle.Fill;
-            tabControl_owner_form.Location = new Point(0, 65);
+            tabControl_owner_form.Location = new Point(0, 0);
             tabControl_owner_form.Name = "tabControl_owner_form";
             tabControl_owner_form.SelectedIndex = 0;
-            tabControl_owner_form.Size = new Size(1115, 617);
+            tabControl_owner_form.Size = new Size(1115, 682);
             tabControl_owner_form.TabIndex = 4;
             // 
             // tabPage_owners
@@ -105,7 +83,7 @@
             tabPage_owners.Location = new Point(4, 24);
             tabPage_owners.Name = "tabPage_owners";
             tabPage_owners.Padding = new Padding(3);
-            tabPage_owners.Size = new Size(1107, 589);
+            tabPage_owners.Size = new Size(1107, 654);
             tabPage_owners.TabIndex = 0;
             tabPage_owners.Text = "Owners";
             tabPage_owners.UseVisualStyleBackColor = true;
@@ -168,7 +146,7 @@
             dataGridView_owners.AllowUserToDeleteRows = false;
             dataGridView_owners.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_owners.Dock = DockStyle.Bottom;
-            dataGridView_owners.Location = new Point(3, 294);
+            dataGridView_owners.Location = new Point(3, 359);
             dataGridView_owners.MultiSelect = false;
             dataGridView_owners.Name = "dataGridView_owners";
             dataGridView_owners.ReadOnly = true;
@@ -330,11 +308,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1115, 682);
             Controls.Add(tabControl_owner_form);
-            Controls.Add(panel_owner_title);
             Name = "Owner_Form";
             Text = "Owner_Form";
-            panel_owner_title.ResumeLayout(false);
-            panel_owner_title.PerformLayout();
             tabControl_owner_form.ResumeLayout(false);
             tabPage_owners.ResumeLayout(false);
             tabPage_owners.PerformLayout();
@@ -347,9 +322,6 @@
         }
 
         #endregion
-
-        private Label label_owner;
-        private Panel panel_owner_title;
         private TabControl tabControl_owner_form;
         private TabPage tabPage_owners;
         private Button button_owner_search;

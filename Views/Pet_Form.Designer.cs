@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label_pets = new Label();
-            panel_pets_title = new Panel();
             tabControl_pets_form = new TabControl();
             tabPage_pet_list = new TabPage();
             dataGridView_pets = new DataGridView();
@@ -66,7 +64,6 @@
             label_pet_name = new Label();
             label_pet_owner_id = new Label();
             label_pet_id = new Label();
-            panel_pets_title.SuspendLayout();
             tabControl_pets_form.SuspendLayout();
             tabPage_pet_list.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_pets).BeginInit();
@@ -77,34 +74,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_pet_picture).BeginInit();
             SuspendLayout();
             // 
-            // label_pets
-            // 
-            label_pets.AutoSize = true;
-            label_pets.Location = new Point(40, 29);
-            label_pets.Name = "label_pets";
-            label_pets.Size = new Size(29, 15);
-            label_pets.TabIndex = 0;
-            label_pets.Text = "Pets";
-            // 
-            // panel_pets_title
-            // 
-            panel_pets_title.BackColor = Color.White;
-            panel_pets_title.Controls.Add(label_pets);
-            panel_pets_title.Dock = DockStyle.Top;
-            panel_pets_title.Location = new Point(0, 0);
-            panel_pets_title.Name = "panel_pets_title";
-            panel_pets_title.Size = new Size(1095, 65);
-            panel_pets_title.TabIndex = 1;
-            // 
             // tabControl_pets_form
             // 
             tabControl_pets_form.Controls.Add(tabPage_pet_list);
             tabControl_pets_form.Controls.Add(tabPage_pet_details);
             tabControl_pets_form.Dock = DockStyle.Fill;
-            tabControl_pets_form.Location = new Point(0, 65);
+            tabControl_pets_form.Location = new Point(0, 0);
             tabControl_pets_form.Name = "tabControl_pets_form";
             tabControl_pets_form.SelectedIndex = 0;
-            tabControl_pets_form.Size = new Size(1095, 590);
+            tabControl_pets_form.Size = new Size(1095, 655);
             tabControl_pets_form.TabIndex = 2;
             // 
             // tabPage_pet_list
@@ -119,7 +97,7 @@
             tabPage_pet_list.Location = new Point(4, 24);
             tabPage_pet_list.Name = "tabPage_pet_list";
             tabPage_pet_list.Padding = new Padding(3);
-            tabPage_pet_list.Size = new Size(1087, 562);
+            tabPage_pet_list.Size = new Size(1087, 627);
             tabPage_pet_list.TabIndex = 0;
             tabPage_pet_list.Text = "Pet List";
             tabPage_pet_list.UseVisualStyleBackColor = true;
@@ -130,7 +108,7 @@
             dataGridView_pets.AllowUserToDeleteRows = false;
             dataGridView_pets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_pets.Dock = DockStyle.Bottom;
-            dataGridView_pets.Location = new Point(3, 265);
+            dataGridView_pets.Location = new Point(3, 330);
             dataGridView_pets.MultiSelect = false;
             dataGridView_pets.Name = "dataGridView_pets";
             dataGridView_pets.ReadOnly = true;
@@ -458,11 +436,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1095, 655);
             Controls.Add(tabControl_pets_form);
-            Controls.Add(panel_pets_title);
             Name = "Pet_Form";
             Text = "Pet_From";
-            panel_pets_title.ResumeLayout(false);
-            panel_pets_title.PerformLayout();
             tabControl_pets_form.ResumeLayout(false);
             tabPage_pet_list.ResumeLayout(false);
             tabPage_pet_list.PerformLayout();
@@ -477,9 +452,6 @@
         }
 
         #endregion
-
-        private Label label_pets;
-        private Panel panel_pets_title;
         private TabControl tabControl_pets_form;
         private TabPage tabPage_pet_list;
         private TabPage tabPage_pet_details;

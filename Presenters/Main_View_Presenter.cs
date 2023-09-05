@@ -31,6 +31,8 @@ namespace Veterinary_CRUD_App.Presenters
             this.main_view_instance = main_view_interface as Main_View ?? throw new InvalidOperationException("The provided view is not of type Main_View");
 
             Subscribe_Events_To_Functions();
+
+            Start_Homepage_View();
         }
 
         // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -43,6 +45,7 @@ namespace Veterinary_CRUD_App.Presenters
             main_view_interface.Show_Pet_View += Show_Pet_View;
             main_view_interface.Show_Owner_View += Show_Owner_View;
             main_view_interface.Show_Visit_View += Show_Visit_View;
+            main_view_instance.Show_Homepage_View += Show_Homepage_View;
             Event_Aggregator.Instance.Request_Open_Form += Open_Specific_Form_With_Id;
 
             if (main_view_interface is Form form_view)
@@ -57,6 +60,7 @@ namespace Veterinary_CRUD_App.Presenters
             main_view_interface.Show_Pet_View -= Show_Pet_View;
             main_view_interface.Show_Owner_View -= Show_Owner_View;
             main_view_interface.Show_Visit_View -= Show_Visit_View;
+            main_view_instance.Show_Homepage_View -= Show_Homepage_View;
             Event_Aggregator.Instance.Request_Open_Form -= Open_Specific_Form_With_Id;
 
             if (main_view_interface is Form form_view)
@@ -192,6 +196,13 @@ namespace Veterinary_CRUD_App.Presenters
             Show_Form(typeof(Visit_Form), typeof(IVisit_Repository_Interface), typeof(Visit_Form_Presenter));
         }
 
+        // Open the homepage
+        private void Show_Homepage_View(object? sender, EventArgs e)
+        {
+            main_view_instance.Close_All_Forms_Except(typeof(Homepage));
+            Get_Form_Instance(typeof(Homepage), main_view_instance);
+        }
+
         // Standard open form ------------------------------------------------------------------------------------------------
 
         // Open a specific form
@@ -207,6 +218,13 @@ namespace Veterinary_CRUD_App.Presenters
 
             // Invoke the method even if e.Id is null
             load_method?.Invoke(presenter, new object[] { e.Id });
+        }
+
+        // Start with the homepage opened
+        private void Start_Homepage_View()
+        {
+            main_view_instance.Close_All_Forms_Except(typeof(Homepage));
+            Get_Form_Instance(typeof(Homepage), main_view_instance);
         }
     }
 }
