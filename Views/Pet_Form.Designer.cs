@@ -64,6 +64,9 @@
             label_pet_name = new Label();
             label_pet_owner_id = new Label();
             label_pet_id = new Label();
+            materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
             tabControl_pets_form.SuspendLayout();
             tabPage_pet_list.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_pets).BeginInit();
@@ -72,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown_pet_age).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_pet_visits).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_pet_picture).BeginInit();
+            materialTabControl1.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl_pets_form
@@ -87,6 +91,7 @@
             // 
             // tabPage_pet_list
             // 
+            tabPage_pet_list.Controls.Add(materialTabControl1);
             tabPage_pet_list.Controls.Add(dataGridView_pets);
             tabPage_pet_list.Controls.Add(button_pet_delete);
             tabPage_pet_list.Controls.Add(button_pet_edit);
@@ -200,7 +205,7 @@
             tabPage_pet_details.Location = new Point(4, 24);
             tabPage_pet_details.Name = "tabPage_pet_details";
             tabPage_pet_details.Padding = new Padding(3);
-            tabPage_pet_details.Size = new Size(1087, 562);
+            tabPage_pet_details.Size = new Size(1087, 627);
             tabPage_pet_details.TabIndex = 1;
             tabPage_pet_details.Text = "Pet Details";
             tabPage_pet_details.UseVisualStyleBackColor = true;
@@ -430,6 +435,39 @@
             label_pet_id.TabIndex = 0;
             label_pet_id.Text = "Pet ID";
             // 
+            // materialTabControl1
+            // 
+            materialTabControl1.Controls.Add(tabPage1);
+            materialTabControl1.Controls.Add(tabPage2);
+            materialTabControl1.Depth = 0;
+            materialTabControl1.Location = new Point(136, 133);
+            materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialTabControl1.Multiline = true;
+            materialTabControl1.Name = "materialTabControl1";
+            materialTabControl1.SelectedIndex = 0;
+            materialTabControl1.Size = new Size(840, 348);
+            materialTabControl1.TabIndex = 7;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(832, 320);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(192, 72);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Pet_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -448,6 +486,7 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown_pet_age).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_pet_visits).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_pet_picture).EndInit();
+            materialTabControl1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -488,5 +527,8 @@
         private ComboBox comboBox_pet_owner_id;
         private Button button_pet_add_visit;
         private Button button_pet_delete_visit;
+        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
     }
 }
