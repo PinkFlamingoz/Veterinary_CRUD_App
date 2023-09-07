@@ -1,4 +1,5 @@
-﻿using Veterinary_CRUD_App.Base_Forms;
+﻿using System.Reflection;
+using Veterinary_CRUD_App.Base_Forms;
 using Veterinary_CRUD_App.Interfaces.Owner;
 using Veterinary_CRUD_App.Interfaces.Pets;
 using Veterinary_CRUD_App.Presenters;
@@ -59,8 +60,8 @@ namespace Veterinary_CRUD_App.Views
         public Owner_Form()
         {
             InitializeComponent();
-            Initialize_Form(this);
             Subscribe_Button_Clicks_To_Invoking_Calls();
+            Initialize_Form(this);
             tabControl_owner_form.TabPages.Remove(tabPage_owner_details);
         }
 

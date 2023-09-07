@@ -1,5 +1,6 @@
 ﻿using MaterialSkin.Controls;
 using System.Diagnostics;
+using System.Reflection;
 using Veterinary_CRUD_App.Interfaces;
 using Veterinary_CRUD_App.Presenters.Common;
 
@@ -29,13 +30,17 @@ namespace Veterinary_CRUD_App.Views
         public Main_View()
         {
             InitializeComponent();
-
             Subscribe_Button_Clicks_To_Invoking_Calls();
-
+            Utilities.Set_Double_Buffered_Recursively(this, true);
             Theme_Manager.Apply_Theme_To_Form(this);
         }
 
         // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        protected static void Set_Double_Buffered(Control control, bool value)
+        {
+            var prop = control.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            prop?.SetValue(control, value, null);
+        }
 
         // Events subscriptions ----------------------------------------------------------------------------------------------
 

@@ -1,4 +1,5 @@
 ﻿using MaterialSkin.Controls;
+using System.Reflection;
 using Veterinary_CRUD_App.Interfaces;
 using Veterinary_CRUD_App.Presenters.Common;
 
@@ -82,9 +83,11 @@ namespace Veterinary_CRUD_App.Base_Forms
 
         // Events subscriptions ----------------------------------------------------------------------------------------------
 
+        // Initialize the form
         protected static void Initialize_Form(MaterialForm form)
         {
             Theme_Manager.Apply_Theme_To_Form(form);
+            Utilities.Set_Double_Buffered_Recursively(form, true);
         }
 
         // Subscribe buttons to events # OVERRIDEN IN THE DERIVED CLASSES

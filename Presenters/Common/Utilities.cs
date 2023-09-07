@@ -111,7 +111,6 @@ namespace Veterinary_CRUD_App.Presenters.Common
             }
         }
 
-
         // Helper function to check if a type is nullable.
         private static bool Is_Nullable(Type type)
         {
@@ -190,6 +189,23 @@ namespace Veterinary_CRUD_App.Presenters.Common
 
             // Build and return the configuration.
             return builder.Build();
+        }
+
+        // Set double buffered so the control does not flicker
+        public static void Set_Double_Buffered(Control control, bool value)
+        {
+            var prop = control.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            prop?.SetValue(control, value, null);
+        }
+
+        public static void Set_Double_Buffered_Recursively(Control control, bool value)
+        {
+            Set_Double_Buffered(control, value);
+
+            foreach (Control child in control.Controls)
+            {
+                Set_Double_Buffered_Recursively(child, value);
+            }
         }
     }
 }

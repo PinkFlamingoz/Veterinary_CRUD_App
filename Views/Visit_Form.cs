@@ -3,6 +3,7 @@ using Veterinary_CRUD_App.Base_Forms;
 using Veterinary_CRUD_App.Presenters.Common;
 using Veterinary_CRUD_App.Interfaces.Pets;
 using Veterinary_CRUD_App.Presenters;
+using System.Reflection;
 
 namespace Veterinary_CRUD_App.Views
 {
@@ -97,8 +98,8 @@ namespace Veterinary_CRUD_App.Views
         public Visit_Form()
         {
             InitializeComponent();
-            Initialize_Form(this);
             Subscribe_Button_Clicks_To_Invoking_Calls();
+            Initialize_Form(this);
             tabControl_visits_form.TabPages.Remove(tabPage_visit_details);
         }
 

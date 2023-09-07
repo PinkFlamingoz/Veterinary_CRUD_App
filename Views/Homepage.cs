@@ -3,6 +3,7 @@ using MaterialSkin.Controls;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Reflection;
+using System.Windows.Forms;
 using Veterinary_CRUD_App.Presenters.Common;
 using Timer = System.Windows.Forms.Timer;
 
@@ -32,11 +33,10 @@ namespace Veterinary_CRUD_App.Views
             InitializeComponent();
             Initialize_Clock();
 
-            Theme_Manager.Apply_Theme_To_Form(this);
-
             Subscribe_Controls();
 
-            Set_Double_Buffered(panel_clock, true);
+            Theme_Manager.Apply_Theme_To_Form(this);
+            Utilities.Set_Double_Buffered_Recursively(this, true);
 
             sking_manager = MaterialSkinManager.Instance;
             font_numbers = sking_manager.getFontByType(MaterialSkinManager.fontType.H5);
@@ -45,13 +45,6 @@ namespace Veterinary_CRUD_App.Views
         }
 
         // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-        // Set double buffered so the control does not flicker
-        private static void Set_Double_Buffered(Control control, bool value)
-        {
-            var prop = control.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
-            prop?.SetValue(control, value, null);
-        }
 
         // Events subscriptions ----------------------------------------------------------------------------------------------
 
