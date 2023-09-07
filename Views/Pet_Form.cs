@@ -4,8 +4,6 @@ using Veterinary_CRUD_App.Base_Forms;
 using Veterinary_CRUD_App.Presenters;
 using Veterinary_CRUD_App.Interfaces.Visits;
 using Veterinary_CRUD_App.Interfaces.Owner;
-using Veterinary_CRUD_App.Interfaces;
-using Veterinary_CRUD_App.Models;
 
 namespace Veterinary_CRUD_App.Views
 {
@@ -115,7 +113,7 @@ namespace Veterinary_CRUD_App.Views
             }
         }
 
-        public ComboBox I_pet_owner_name_cb
+        public MaterialSkin.Controls.MaterialComboBox I_pet_owner_name_cb
         {
             get => comboBox_pet_owner_id;
             set => comboBox_pet_owner_id = value;
@@ -135,7 +133,7 @@ namespace Veterinary_CRUD_App.Views
 
         protected override TabControl Main_Tab_Control => tabControl_pets_form;
         protected override Button Search_Button => button_pet_search;
-        protected override TextBox Search_textBox => textBox_pet_search;
+        protected override MaterialSkin.Controls.MaterialTextBox2 Search_textBox => textBox_pet_search;
         protected override Button Add_new_button => button_pet_add_new;
         protected override Button Save_button => button_pet_save;
         protected override Button Delete_button => button_pet_delete;
@@ -151,6 +149,7 @@ namespace Veterinary_CRUD_App.Views
         {
             InitializeComponent();
             Subscribe_Button_Clicks_To_Invoking_Calls();
+            Initialize_Form(this);
             tabControl_pets_form.TabPages.Remove(tabPage_pet_details);
         }
 

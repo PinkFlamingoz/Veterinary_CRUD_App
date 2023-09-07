@@ -46,7 +46,7 @@ namespace Veterinary_CRUD_App.Interfaces.Pets
         string I_pet_picture { get; set; }
 
         // Represents a Combo Box control to select/display the owner's name.
-        ComboBox I_pet_owner_name_cb { get; set; }
+        MaterialSkin.Controls.MaterialComboBox I_pet_owner_name_cb { get; set; }
 
         // EVENT DECLARATIONS:
 

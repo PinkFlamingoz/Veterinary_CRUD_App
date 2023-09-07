@@ -1,7 +1,6 @@
 ﻿using Veterinary_CRUD_App.Base_Forms;
 using Veterinary_CRUD_App.Interfaces.Owner;
 using Veterinary_CRUD_App.Interfaces.Pets;
-using Veterinary_CRUD_App.Interfaces.Visits;
 using Veterinary_CRUD_App.Presenters;
 using Veterinary_CRUD_App.Presenters.Common;
 
@@ -39,13 +38,13 @@ namespace Veterinary_CRUD_App.Views
 
         public override string I_search_value
         {
-            get => textBox_owner_pet_search.Text;
-            set => textBox_owner_pet_search.Text = value;
+            get => textBox_owner_search.Text;
+            set => textBox_owner_search.Text = value;
         }
 
         protected override TabControl Main_Tab_Control => tabControl_owner_form;
         protected override Button Search_Button => button_owner_search;
-        protected override TextBox Search_textBox => textBox_owner_pet_search;
+        protected override MaterialSkin.Controls.MaterialTextBox2 Search_textBox => textBox_owner_search;
         protected override Button Add_new_button => button_owner_add_owner;
         protected override Button Save_button => button_owner_save;
         protected override Button Delete_button => button_owner_delete;
@@ -60,6 +59,7 @@ namespace Veterinary_CRUD_App.Views
         public Owner_Form()
         {
             InitializeComponent();
+            Initialize_Form(this);
             Subscribe_Button_Clicks_To_Invoking_Calls();
             tabControl_owner_form.TabPages.Remove(tabPage_owner_details);
         }

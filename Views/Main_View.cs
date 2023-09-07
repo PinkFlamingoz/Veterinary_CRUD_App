@@ -1,16 +1,5 @@
-﻿using FontAwesome.Sharp;
-using MaterialSkin;
-using MaterialSkin.Controls;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using MaterialSkin.Controls;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Veterinary_CRUD_App.Interfaces;
 using Veterinary_CRUD_App.Presenters.Common;
 
@@ -41,12 +30,9 @@ namespace Veterinary_CRUD_App.Views
         {
             InitializeComponent();
 
-            var material_skin_manager = MaterialSkinManager.Instance;
-            material_skin_manager.AddFormToManage(this);
-            material_skin_manager.Theme = MaterialSkinManager.Themes.LIGHT;
-            material_skin_manager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-
             Subscribe_Button_Clicks_To_Invoking_Calls();
+
+            Theme_Manager.Apply_Theme_To_Form(this);
         }
 
         // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

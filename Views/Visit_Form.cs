@@ -3,7 +3,6 @@ using Veterinary_CRUD_App.Base_Forms;
 using Veterinary_CRUD_App.Presenters.Common;
 using Veterinary_CRUD_App.Interfaces.Pets;
 using Veterinary_CRUD_App.Presenters;
-using Veterinary_CRUD_App.Interfaces.Owner;
 
 namespace Veterinary_CRUD_App.Views
 {
@@ -68,7 +67,7 @@ namespace Veterinary_CRUD_App.Views
             set => textBox_visit_description.Text = value;
         }
 
-        public ComboBox I_visit_pet_name_cb
+        public MaterialSkin.Controls.MaterialComboBox I_visit_pet_name_cb
         {
             get => comboBox_visit_pet_id;
             set => comboBox_visit_pet_id = value;
@@ -84,7 +83,7 @@ namespace Veterinary_CRUD_App.Views
 
         protected override TabControl Main_Tab_Control => tabControl_visits_form;
         protected override Button Search_Button => button_visit_search;
-        protected override TextBox Search_textBox => textBox_visit_search;
+        protected override MaterialSkin.Controls.MaterialTextBox2 Search_textBox => textBox_visit_search;
         protected override Button Add_new_button => button_visit_add_new_visit;
         protected override Button Save_button => button_visit_save;
         protected override Button Delete_button => button_visit_delete;
@@ -98,6 +97,7 @@ namespace Veterinary_CRUD_App.Views
         public Visit_Form()
         {
             InitializeComponent();
+            Initialize_Form(this);
             Subscribe_Button_Clicks_To_Invoking_Calls();
             tabControl_visits_form.TabPages.Remove(tabPage_visit_details);
         }

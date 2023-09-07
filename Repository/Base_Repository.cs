@@ -1,15 +1,8 @@
-﻿using Azure;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
 using System.Data;
 using Veterinary_CRUD_App.Database;
 using Veterinary_CRUD_App.Presenters.Common;
-using static System.Windows.Forms.Design.AxImporter;
 
 namespace Veterinary_CRUD_App.Repository
 {

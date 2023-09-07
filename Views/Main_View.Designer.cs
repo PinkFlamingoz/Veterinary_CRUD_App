@@ -50,7 +50,7 @@
             materialTabControl_menu.Controls.Add(tabPage_exit);
             materialTabControl_menu.Depth = 0;
             materialTabControl_menu.ImageList = imageList_menu_icons;
-            materialTabControl_menu.Location = new Point(537, 300);
+            materialTabControl_menu.Location = new Point(662, 351);
             materialTabControl_menu.MouseState = MaterialSkin.MouseState.HOVER;
             materialTabControl_menu.Multiline = true;
             materialTabControl_menu.Name = "materialTabControl_menu";
@@ -125,20 +125,20 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1350, 729);
+            ClientSize = new Size(1600, 900);
             Controls.Add(materialTabControl_menu);
             DrawerAutoShow = true;
             DrawerBackgroundWithAccent = true;
-            DrawerIndicatorWidth = 10;
             DrawerShowIconsWhenHidden = true;
             DrawerTabControl = materialTabControl_menu;
             DrawerUseColors = true;
             Font = new Font("Cascadia Code", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormStyle = FormStyles.ActionBar_48;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             Margin = new Padding(4, 2, 4, 2);
             Name = "Main_View";
-            Padding = new Padding(3, 72, 3, 3);
+            Padding = new Padding(3);
             Text = "Cat A Log";
             materialTabControl_menu.ResumeLayout(false);
             ResumeLayout(false);

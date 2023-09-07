@@ -6,7 +6,6 @@ using Veterinary_CRUD_App.Interfaces.Pets;
 using Veterinary_CRUD_App.Interfaces.Visits;
 using Veterinary_CRUD_App.Presenters.Common;
 using Veterinary_CRUD_App.Views;
-using static Veterinary_CRUD_App.Program;
 
 namespace Veterinary_CRUD_App.Presenters
 {
@@ -130,7 +129,7 @@ namespace Veterinary_CRUD_App.Presenters
         {
             if (!repository_cashe.ContainsKey(Repository_Interface_Type))
             {
-                repository_cashe[Repository_Interface_Type] = Service_Locator.Get_Service(Repository_Interface_Type) ?? throw new InvalidOperationException("Repository could not be located."); ;
+                repository_cashe[Repository_Interface_Type] = Service_Locator.Get_Service(Repository_Interface_Type) ?? throw new InvalidOperationException("Repository could not be located.");
             }
             return repository_cashe[Repository_Interface_Type];
         }

@@ -1,4 +1,5 @@
-﻿using Veterinary_CRUD_App.Interfaces;
+﻿using MaterialSkin.Controls;
+using Veterinary_CRUD_App.Interfaces;
 using Veterinary_CRUD_App.Presenters.Common;
 
 namespace Veterinary_CRUD_App.Base_Forms
@@ -9,7 +10,7 @@ namespace Veterinary_CRUD_App.Base_Forms
     /// This abstract class serves as the template for various other forms,
     /// defining a set of shared members and functionalities.
     /// </summary>
-    public abstract class Base_Form : Form, IBase_View_Interface
+    public abstract class Base_Form : MaterialForm, IBase_View_Interface
     {
         // Common values
         public DataGridView I_main_data_grid_view
@@ -30,7 +31,7 @@ namespace Veterinary_CRUD_App.Base_Forms
 
         protected abstract TabControl Main_Tab_Control { get; }
         protected abstract Button Search_Button { get; }
-        protected abstract TextBox Search_textBox { get; }
+        protected abstract MaterialSkin.Controls.MaterialTextBox2 Search_textBox { get; }
         protected abstract Button Add_new_button { get; }
         protected abstract Button Save_button { get; }
         protected abstract Button Delete_button { get; }
@@ -80,6 +81,11 @@ namespace Veterinary_CRUD_App.Base_Forms
         // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // Events subscriptions ----------------------------------------------------------------------------------------------
+
+        protected static void Initialize_Form(MaterialForm form)
+        {
+            Theme_Manager.Apply_Theme_To_Form(form);
+        }
 
         // Subscribe buttons to events # OVERRIDEN IN THE DERIVED CLASSES
         protected virtual void Subscribe_Button_Clicks_To_Invoking_Calls()
@@ -291,7 +297,7 @@ namespace Veterinary_CRUD_App.Base_Forms
 
         protected override Button Search_Button => throw new NotImplementedException(); // Or a new Button();
 
-        protected override TextBox Search_textBox => throw new NotImplementedException();
+        protected override MaterialSkin.Controls.MaterialTextBox2 Search_textBox => throw new NotImplementedException();
 
         protected override Button Add_new_button => throw new NotImplementedException();
 

@@ -30,6 +30,6 @@ namespace Veterinary_CRUD_App.Interfaces.Visits
         string I_visit_description { get; set; }
 
         // A ComboBox control property that is used to select or display the name of the pet associated with this visit.
-        ComboBox I_visit_pet_name_cb { get; set; }
+        MaterialSkin.Controls.MaterialComboBox I_visit_pet_name_cb { get; set; }
     }
 }

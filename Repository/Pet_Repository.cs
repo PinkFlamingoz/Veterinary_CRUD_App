@@ -2,7 +2,6 @@
 using System.Data;
 using Veterinary_CRUD_App.Interfaces.Pets;
 using Veterinary_CRUD_App.Models;
-using Veterinary_CRUD_App.Presenters.Common;
 
 namespace Veterinary_CRUD_App.Repository
 {
