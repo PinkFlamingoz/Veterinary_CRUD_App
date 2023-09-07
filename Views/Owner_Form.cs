@@ -62,7 +62,6 @@ namespace Veterinary_CRUD_App.Views
             InitializeComponent();
             Subscribe_Button_Clicks_To_Invoking_Calls();
             Initialize_Form(this);
-            tabControl_owner_form.TabPages.Remove(tabPage_owner_details);
         }
 
         // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

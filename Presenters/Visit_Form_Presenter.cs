@@ -25,6 +25,7 @@ namespace Veterinary_CRUD_App.Presenters
             };
             Register_Grid_View(main_grid_view);
             Current_binding_source_key = "main_grid_view_visit";
+            view.I_Data_Grid_View_Key = "main_grid_view_visit";
 
             // Grid view configurations ------------------------------------------------------------------------------------------
 

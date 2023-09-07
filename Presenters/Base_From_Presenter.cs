@@ -31,7 +31,7 @@ namespace Veterinary_CRUD_App.Presenters
         protected void Initialize_Form_Presenter()
         {
             Subscribe_Events_To_Functions();
-            Load_All_DataGridViews();
+            Load_Specific_Grid(Current_binding_source_key);
         }
 
         // Events subscriptions ----------------------------------------------------------------------------------------------
@@ -139,6 +139,7 @@ namespace Veterinary_CRUD_App.Presenters
         // Clear the view aka reset the properties on the page details tab
         private void Clear_View()
         {
+            Current_binding_source_key = view_interface.I_Data_Grid_View_Key;
             Utilities.Reset_Properties(view_interface);
         }
 

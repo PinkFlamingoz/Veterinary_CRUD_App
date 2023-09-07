@@ -28,6 +28,14 @@ namespace Veterinary_CRUD_App.Base_Forms
 
         protected string message = "";
 
+        protected string Data_Grid_View_Key = "";
+
+        public string I_Data_Grid_View_Key
+        {
+            get => Data_Grid_View_Key;
+            set => Data_Grid_View_Key = value;
+        }
+
         // Abstract properties for the derived classes to implement
 
         protected abstract TabControl Main_Tab_Control { get; }
@@ -219,18 +227,34 @@ namespace Veterinary_CRUD_App.Base_Forms
 
         // UI manipulation functions -----------------------------------------------------------------------------------------
 
+        public static void Hide_Content(TabPage page)
+        {
+            foreach (Control control in page.Controls)
+            {
+                control.Visible = false;
+            }
+        }
+
+        public static void Show_Content(TabPage page)
+        {
+            foreach (Control control in page.Controls)
+            {
+                control.Visible = true;
+            }
+        }
+
         // Show the list tab page on the main tab control aka the main tab
         public void Show_List_Tab_Page()
         {
             if (Main_Tab_Control.SelectedTab != List_tab_page)
             {
-                Main_Tab_Control.TabPages.Remove(Details_tab_page);
-
-                // Only add if it's not already present.
-                if (!Main_Tab_Control.TabPages.Contains(List_tab_page))
-                {
-                    Main_Tab_Control.TabPages.Add(List_tab_page);
-                }
+                // Hide_Content(Details_tab_page);
+                //
+                // // Only show if it's not already visible.
+                // if (!List_tab_page.Controls[0].Visible)
+                // {
+                //     Show_Content(List_tab_page);
+                // }
 
                 Main_Tab_Control.SelectedTab = List_tab_page;  // Ensure the list tab is selected.
             }
@@ -241,13 +265,13 @@ namespace Veterinary_CRUD_App.Base_Forms
         {
             if (Main_Tab_Control.SelectedTab != Details_tab_page)
             {
-                Main_Tab_Control.TabPages.Remove(List_tab_page);
-
-                // Only add if it's not already present.
-                if (!Main_Tab_Control.TabPages.Contains(Details_tab_page))
-                {
-                    Main_Tab_Control.TabPages.Add(Details_tab_page);
-                }
+                // Hide_Content(List_tab_page);
+                //
+                // // Only show if it's not already visible.
+                // if (!Details_tab_page.Controls[0].Visible)
+                // {
+                //     Show_Content(Details_tab_page);
+                // }
 
                 Main_Tab_Control.SelectedTab = Details_tab_page;  // Ensure the details tab is selected.
             }

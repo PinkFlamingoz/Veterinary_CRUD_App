@@ -38,6 +38,7 @@
             button_owner_search = new MaterialSkin.Controls.MaterialButton();
             textBox_owner_search = new MaterialSkin.Controls.MaterialTextBox2();
             tabPage_owner_details = new TabPage();
+            panel_container_data = new Panel();
             dataGridView_owner_pets = new DataGridView();
             panel_container = new Panel();
             materialCard2 = new MaterialSkin.Controls.MaterialCard();
@@ -54,18 +55,17 @@
             textBox_owner_phone = new MaterialSkin.Controls.MaterialTextBox2();
             textBox_owner_name = new MaterialSkin.Controls.MaterialTextBox2();
             numericUpDown_owner_id = new NumericUpDown();
-            panel_container_data = new Panel();
             tabControl_owner_form.SuspendLayout();
             tabPage_owners.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_owners).BeginInit();
             materialCard1.SuspendLayout();
             tabPage_owner_details.SuspendLayout();
+            panel_container_data.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_owner_pets).BeginInit();
             panel_container.SuspendLayout();
             materialCard2.SuspendLayout();
             panel_buttons_container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_owner_id).BeginInit();
-            panel_container_data.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl_owner_form
@@ -107,7 +107,7 @@
             dataGridView_owners.RowTemplate.Height = 25;
             dataGridView_owners.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_owners.Size = new Size(1580, 442);
-            dataGridView_owners.TabIndex = 6;
+            dataGridView_owners.TabIndex = 8;
             // 
             // materialCard1
             // 
@@ -253,6 +253,17 @@
             tabPage_owner_details.Text = "Details";
             tabPage_owner_details.UseVisualStyleBackColor = true;
             // 
+            // panel_container_data
+            // 
+            panel_container_data.Controls.Add(dataGridView_owner_pets);
+            panel_container_data.Dock = DockStyle.Fill;
+            panel_container_data.Location = new Point(655, 3);
+            panel_container_data.Margin = new Padding(22);
+            panel_container_data.Name = "panel_container_data";
+            panel_container_data.Padding = new Padding(22);
+            panel_container_data.Size = new Size(928, 860);
+            panel_container_data.TabIndex = 33;
+            // 
             // dataGridView_owner_pets
             // 
             dataGridView_owner_pets.AllowUserToAddRows = false;
@@ -266,7 +277,7 @@
             dataGridView_owner_pets.RowTemplate.Height = 25;
             dataGridView_owner_pets.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_owner_pets.Size = new Size(884, 816);
-            dataGridView_owner_pets.TabIndex = 19;
+            dataGridView_owner_pets.TabIndex = 20;
             // 
             // panel_container
             // 
@@ -560,17 +571,6 @@
             numericUpDown_owner_id.Size = new Size(164, 32);
             numericUpDown_owner_id.TabIndex = 24;
             // 
-            // panel_container_data
-            // 
-            panel_container_data.Controls.Add(dataGridView_owner_pets);
-            panel_container_data.Dock = DockStyle.Fill;
-            panel_container_data.Location = new Point(655, 3);
-            panel_container_data.Margin = new Padding(22);
-            panel_container_data.Name = "panel_container_data";
-            panel_container_data.Padding = new Padding(22);
-            panel_container_data.Size = new Size(928, 860);
-            panel_container_data.TabIndex = 33;
-            // 
             // Owner_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -587,20 +587,19 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView_owners).EndInit();
             materialCard1.ResumeLayout(false);
             tabPage_owner_details.ResumeLayout(false);
+            panel_container_data.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView_owner_pets).EndInit();
             panel_container.ResumeLayout(false);
             materialCard2.ResumeLayout(false);
             materialCard2.PerformLayout();
             panel_buttons_container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)numericUpDown_owner_id).EndInit();
-            panel_container_data.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
         private MaterialSkin.Controls.MaterialTabControl tabControl_owner_form;
         private TabPage tabPage_owners;
-        private DataGridView dataGridView_owners;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialButton button_owner_search;
         private MaterialSkin.Controls.MaterialTextBox2 textBox_owner_search;
@@ -618,12 +617,13 @@
         private MaterialSkin.Controls.MaterialTextBox2 textBox_owner_phone;
         private MaterialSkin.Controls.MaterialTextBox2 textBox_owner_name;
         private NumericUpDown numericUpDown_owner_id;
-        private DataGridView dataGridView_owner_pets;
         private MaterialSkin.Controls.MaterialButton button_owner_delete;
         private MaterialSkin.Controls.MaterialButton button_owner_edit;
         private MaterialSkin.Controls.MaterialButton button_owner_add_owner;
         private MaterialSkin.Controls.MaterialTextBox2 textBox_owner_email;
         private Panel panel_container;
         private Panel panel_container_data;
+        private DataGridView dataGridView_owners;
+        private DataGridView dataGridView_owner_pets;
     }
 }

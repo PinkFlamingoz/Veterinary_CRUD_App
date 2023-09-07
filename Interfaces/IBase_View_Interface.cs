@@ -26,6 +26,9 @@ namespace Veterinary_CRUD_App.Interfaces
         // Used to store or display a message, to provide feedback to the user.
         string I_message { get; set; }
 
+        // Get the main data grid view key
+        string I_Data_Grid_View_Key { get; set; }
+
         // EVENT DECLARATIONS:
 
         // Event triggered when a search operation is initiated.
