@@ -6,7 +6,7 @@
     public class Data_Grid_View_Tag
     {
         // This property represents a key that identifies the binding source associated with the DataGridView.
-        public string? Binding_SourceKey { get; set; }
+        public string? Binding_Source_Key { get; set; }
 
         // This property holds the configuration settings used to customize the DataGridView's behavior.
         public Data_Grid_View_Configuration? Configuration { get; set; }

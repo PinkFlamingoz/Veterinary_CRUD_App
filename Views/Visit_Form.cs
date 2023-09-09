@@ -23,7 +23,7 @@ namespace Veterinary_CRUD_App.Views
             {
                 if (I_visit_pet_name_cb.SelectedItem is Custom_Combo_Box selected_pet)
                 {
-                    return selected_pet.ID;
+                    return selected_pet.Id;
                 }
                 return 0;
             }
@@ -31,7 +31,7 @@ namespace Veterinary_CRUD_App.Views
             {
                 foreach (var item in I_visit_pet_name_cb.Items)
                 {
-                    if (item is Custom_Combo_Box pet_item && pet_item.ID == value)
+                    if (item is Custom_Combo_Box pet_item && pet_item.Id == value)
                     {
                         I_visit_pet_name_cb.SelectedItem = pet_item;
                         return;

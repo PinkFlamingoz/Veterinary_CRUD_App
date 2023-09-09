@@ -50,6 +50,7 @@
             materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             materialLabel_settings = new MaterialSkin.Controls.MaterialLabel();
             materialSwitch_theme = new MaterialSkin.Controls.MaterialSwitch();
+            materialLabel_link_lable = new MaterialSkin.Controls.MaterialLabel();
             panel_application_name_container.SuspendLayout();
             materialCard2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_application_logo).BeginInit();
@@ -70,6 +71,7 @@
             // 
             materialCard2.Anchor = AnchorStyles.None;
             materialCard2.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard2.Controls.Add(materialLabel_link_lable);
             materialCard2.Controls.Add(pictureBox_application_logo);
             materialCard2.Controls.Add(label_application_name);
             materialCard2.Controls.Add(label_heart);
@@ -101,7 +103,7 @@
             label_application_name.Depth = 0;
             label_application_name.Font = new Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel);
             label_application_name.FontType = MaterialSkin.MaterialSkinManager.fontType.H4;
-            label_application_name.Location = new Point(174, 31);
+            label_application_name.Location = new Point(174, 18);
             label_application_name.MouseState = MaterialSkin.MouseState.HOVER;
             label_application_name.Name = "label_application_name";
             label_application_name.Size = new Size(147, 41);
@@ -116,7 +118,7 @@
             label_heart.Font = new Font("Roboto", 48F, FontStyle.Bold, GraphicsUnit.Pixel);
             label_heart.FontType = MaterialSkin.MaterialSkinManager.fontType.H3;
             label_heart.HighEmphasis = true;
-            label_heart.Location = new Point(333, 22);
+            label_heart.Location = new Point(318, 8);
             label_heart.MouseState = MaterialSkin.MouseState.HOVER;
             label_heart.Name = "label_heart";
             label_heart.Size = new Size(60, 58);
@@ -139,7 +141,7 @@
             panel_clock.Anchor = AnchorStyles.None;
             panel_clock.Location = new Point(0, 0);
             panel_clock.Name = "panel_clock";
-            panel_clock.Size = new Size(1360, 430);
+            panel_clock.Size = new Size(1360, 431);
             panel_clock.TabIndex = 32;
             // 
             // materialCard1
@@ -371,6 +373,22 @@
             materialSwitch_theme.UseVisualStyleBackColor = true;
             materialSwitch_theme.CheckedChanged += MaterialSwitch_Theme_CheckedChanged;
             // 
+            // materialLabel_link_lable
+            // 
+            materialLabel_link_lable.AutoSize = true;
+            materialLabel_link_lable.Cursor = Cursors.Hand;
+            materialLabel_link_lable.Depth = 0;
+            materialLabel_link_lable.Font = new Font("Roboto", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel_link_lable.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            materialLabel_link_lable.HighEmphasis = true;
+            materialLabel_link_lable.Location = new Point(174, 69);
+            materialLabel_link_lable.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel_link_lable.Name = "materialLabel_link_lable";
+            materialLabel_link_lable.Size = new Size(164, 17);
+            materialLabel_link_lable.TabIndex = 32;
+            materialLabel_link_lable.Text = "Made by Hristijan Stavrov";
+            materialLabel_link_lable.UseAccent = true;
+            // 
             // Homepage
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
@@ -421,5 +439,6 @@
         private PictureBox pictureBox_application_logo;
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private Panel panel_clock;
+        private MaterialSkin.Controls.MaterialLabel materialLabel_link_lable;
     }
 }

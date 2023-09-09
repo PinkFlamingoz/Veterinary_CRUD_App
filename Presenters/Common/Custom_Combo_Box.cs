@@ -7,13 +7,13 @@
         public required string Name { get; set; }
 
         // The unique identifier for the ComboBox item.
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         // Overrides the default ToString method to provide a custom representation for the ComboBox item.
         // The returned string will be in the format: (ID) : Name
         public override string ToString()
         {
-            return $"({ID}) : {Name}";
+            return $"({Id}) : {Name}";
         }
     }
 }

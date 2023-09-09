@@ -1,5 +1,7 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using System.Windows.Forms;
+using System.Linq;
 
 namespace Veterinary_CRUD_App.Presenters.Common
 {
@@ -16,7 +18,6 @@ namespace Veterinary_CRUD_App.Presenters.Common
         public static void Apply_Theme_To_Form(MaterialForm form)
         {
             material_skin_manager.AddFormToManage(form);
-            form.Invalidate(true);
             form.Refresh();
         }
 
@@ -33,6 +34,24 @@ namespace Veterinary_CRUD_App.Presenters.Common
         }
 
         public static void Refresh_All_Managed_Forms()
+        {
+            var main_form = Application.OpenForms.Cast<Form>().FirstOrDefault();
+            if (main_form == null) return;
+
+            if (main_form.InvokeRequired)
+            {
+                main_form.Invoke((MethodInvoker)delegate
+                {
+                    Internal_Refresh_All_Managed_Forms();
+                });
+            }
+            else
+            {
+                Internal_Refresh_All_Managed_Forms();
+            }
+        }
+
+        private static void Internal_Refresh_All_Managed_Forms()
         {
             foreach (var form in Application.OpenForms.OfType<MaterialForm>())
             {

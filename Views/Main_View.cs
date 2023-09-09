@@ -8,10 +8,6 @@ namespace Veterinary_CRUD_App.Views
 {
     public partial class Main_View : MaterialForm, IMain_View_Interface
     {
-        // Constants
-
-        private const string GITHUB_URL = "https://github.com/PinkFlamingoz";
-
         // Variables
 
         // Events
@@ -23,8 +19,6 @@ namespace Veterinary_CRUD_App.Views
         public event EventHandler? Show_Visit_View;
 
         public event EventHandler? Show_Homepage_View;
-
-        public event EventHandler? Toggle_Menu_Event;
 
         // Constructor
         public Main_View()
@@ -142,24 +136,6 @@ namespace Veterinary_CRUD_App.Views
                 {
                     form.Hide();
                 }
-            }
-        }
-
-        // Link myself
-        private void LinkLabel_Me_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            try
-            {
-                ProcessStartInfo psi = new()
-                {
-                    FileName = GITHUB_URL,
-                    UseShellExecute = true
-                };
-                Process.Start(psi);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
 

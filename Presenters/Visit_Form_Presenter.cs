@@ -40,13 +40,13 @@ namespace Veterinary_CRUD_App.Presenters
                     var pets = new BindingList<Pet_Model>(repository.Get_All_Pets().ToList());
                     var combo_box_items = new List<Custom_Combo_Box>
                     {
-                        new Custom_Combo_Box() { Name = "--Select a Pet--", ID = 0 }
+                        new Custom_Combo_Box() { Name = "--Select a Pet--", Id = 0 }
                     };
 
                     combo_box_items.AddRange(pets.Select(pet => new Custom_Combo_Box
                     {
                         Name = pet.GET_pet_name,
-                        ID = pet.GET_pet_id
+                        Id = pet.GET_pet_id
                     }));
 
                     return combo_box_items;

@@ -71,13 +71,13 @@ namespace Veterinary_CRUD_App.Presenters
                     var owners = new BindingList<Owner_Model>(repository.Get_All_Owners().ToList());
                     var combo_box_items = new List<Custom_Combo_Box>
                     {
-                                    new Custom_Combo_Box() { Name = "--Select an Option--", ID = 0}
+                       new Custom_Combo_Box() { Name = "--Select an Option--", Id = 0}
                     };
 
                     combo_box_items.AddRange(owners.Select(owner => new Custom_Combo_Box
                     {
                         Name = owner.GET_owner_name,
-                        ID = owner.GET_owner_id
+                        Id = owner.GET_owner_id
                     }));
 
                     return combo_box_items;

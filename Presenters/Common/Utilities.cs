@@ -198,6 +198,7 @@ namespace Veterinary_CRUD_App.Presenters.Common
             prop?.SetValue(control, value, null);
         }
 
+        // Set double buffer for all controls on one form
         public static void Set_Double_Buffered_Recursively(Control control, bool value)
         {
             Set_Double_Buffered(control, value);

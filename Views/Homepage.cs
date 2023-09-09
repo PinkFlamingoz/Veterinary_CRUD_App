@@ -1,9 +1,8 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-using System.Reflection;
-using System.Windows.Forms;
 using Veterinary_CRUD_App.Presenters.Common;
 using Timer = System.Windows.Forms.Timer;
 
@@ -13,6 +12,7 @@ namespace Veterinary_CRUD_App.Views
     {
         // Variables
 
+        private const string GITHUB_URL = "https://github.com/PinkFlamingoz";
         private Timer? clock_timer;
         private readonly Point clock_center;
         private const int clock_radius = 150;
@@ -53,6 +53,7 @@ namespace Veterinary_CRUD_App.Views
         protected virtual void Subscribe_Controls()
         {
             panel_clock.Paint += Panel_Clock_Paint;
+            materialLabel_link_lable.Click += LinkLabel_Me_LinkClicked;
             FormClosed += Homepage_View_FormClosed;
         }
 
@@ -64,6 +65,7 @@ namespace Veterinary_CRUD_App.Views
             font_numbers?.Dispose();
             font_date?.Dispose();
             panel_clock.Paint -= Panel_Clock_Paint;
+            materialLabel_link_lable.Click -= LinkLabel_Me_LinkClicked;
             FormClosed -= Homepage_View_FormClosed;
         }
 
@@ -284,6 +286,24 @@ namespace Veterinary_CRUD_App.Views
         }
 
         // Theme change ------------------------------------------------------------------------------------------------------
+
+        // Link myself
+        private void LinkLabel_Me_LinkClicked(object? sender, EventArgs e)
+        {
+            try
+            {
+                ProcessStartInfo psi = new()
+                {
+                    FileName = GITHUB_URL,
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
 
         // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     }

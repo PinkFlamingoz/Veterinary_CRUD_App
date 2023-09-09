@@ -107,6 +107,26 @@ namespace Veterinary_CRUD_App.Presenters
             throw new KeyNotFoundException($"BindingSource with key '{key}' not found.");
         }
 
+        // Load the item to the view
+        // Load_Item_To_View: Assigns the properties of the given T_Model item to the view interface, essentially populating the view with data from the selected item.
+        protected void Load_Item_To_View(T_Model item)
+        {
+            Utilities.Assign_Properties(item, view_interface);
+        }
+
+        // Clear the view aka reset the properties on the page details tab and reset the binding source key to the main data grid view
+        private void Clear_View()
+        {
+            Current_binding_source_key = view_interface.I_Data_Grid_View_Key;
+            Utilities.Reset_Properties(view_interface);
+        }
+
+        // Helper functions --------------------------------------------------------------------------------------------------
+
+        // Event functions ---------------------------------------------------------------------------------------------------
+
+        // Shared helper functions --------------------------------
+
         // Get the current selected item from the Data Grid View
         // Get_Current_Selected_Item_From_Data_Grid_View: Returns the currently selected item from a DataGridView bound to a specific BindingSource.
         // If no valid item is selected or the selected item is not of the expected type T_Model, a warning is shown to the user and the item_selected flag is set to false.
@@ -121,26 +141,6 @@ namespace Veterinary_CRUD_App.Presenters
 
             item_selected = true;
             return selected_item;
-        }
-
-        // Load the item to the view
-        // Load_Item_To_View: Assigns the properties of the given T_Model item to the view interface, essentially populating the view with data from the selected item.
-        protected void Load_Item_To_View(T_Model item)
-        {
-            Utilities.Assign_Properties(item, view_interface);
-        }
-
-        // Helper functions --------------------------------------------------------------------------------------------------
-
-        // Event functions ---------------------------------------------------------------------------------------------------
-
-        // Shared helper functions --------------------------------
-
-        // Clear the view aka reset the properties on the page details tab
-        private void Clear_View()
-        {
-            Current_binding_source_key = view_interface.I_Data_Grid_View_Key;
-            Utilities.Reset_Properties(view_interface);
         }
 
         // Confirm deletion option
@@ -481,7 +481,7 @@ namespace Veterinary_CRUD_App.Presenters
         {
             var tag = new Data_Grid_View_Tag
             {
-                Binding_SourceKey = binding_source_key
+                Binding_Source_Key = binding_source_key
             };
             grid_view.Tag = tag;
             grid_view.SelectionChanged += On_Grid_View_Selection_Changed;
@@ -492,9 +492,9 @@ namespace Veterinary_CRUD_App.Presenters
         // It captures the binding source key from the DataGridView's meta-information (Tag) when the selection changes.
         private void On_Grid_View_Selection_Changed(object? sender, EventArgs args)
         {
-            if (sender is DataGridView grid_view && grid_view.Tag is Data_Grid_View_Tag tag && tag.Binding_SourceKey != null)
+            if (sender is DataGridView grid_view && grid_view.Tag is Data_Grid_View_Tag tag && tag.Binding_Source_Key != null)
             {
-                Current_binding_source_key = tag.Binding_SourceKey;
+                Current_binding_source_key = tag.Binding_Source_Key;
             }
         }
 
@@ -601,7 +601,7 @@ namespace Veterinary_CRUD_App.Presenters
         // Is an item of the Combo Box selected # CALLED IN THE VIEW OF THE DERIVED CLASS
         protected static bool Is_Valid_Selection_Combo_Box(ComboBox combo_box)
         {
-            if (combo_box.SelectedItem is Custom_Combo_Box selected_item && selected_item.ID != 0)
+            if (combo_box.SelectedItem is Custom_Combo_Box selected_item && selected_item.Id != 0)
             {
                 return true;
             }

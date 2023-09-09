@@ -26,9 +26,7 @@ namespace Veterinary_CRUD_App.Base_Forms
             set => DataGridView_Details = value;
         }
 
-        protected string message = "";
-
-        protected string Data_Grid_View_Key = "";
+        protected string Data_Grid_View_Key = string.Empty;
 
         public string I_Data_Grid_View_Key
         {
@@ -60,6 +58,8 @@ namespace Veterinary_CRUD_App.Base_Forms
             get => Shared_State.Is_edit;
             set => Shared_State.Is_edit = value;
         }
+
+        protected string message = string.Empty;
 
         public string I_message
         {

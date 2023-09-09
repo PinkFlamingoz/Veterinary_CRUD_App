@@ -21,7 +21,5 @@
         // This event is triggered when the user wants to navigate to the Homepage view.
         // It will alert any listeners (args.g., a presenter or controller) that the user has chosen to interact with or view the Homepage section.
         event EventHandler? Show_Homepage_View;
-
-        event EventHandler? Toggle_Menu_Event;
     }
 }
