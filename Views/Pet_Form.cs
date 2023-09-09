@@ -134,7 +134,7 @@ namespace Veterinary_CRUD_App.Views
 
         protected override TabControl Main_Tab_Control => tabControl_pets_form;
         protected override Button Search_Button => button_pet_search;
-        protected override MaterialSkin.Controls.MaterialTextBox2 Search_textBox => textBox_pet_search;
+        protected override MaterialSkin.Controls.MaterialTextBox2 Search_Text_Box => textBox_pet_search;
         protected override Button Add_new_button => button_pet_add_new;
         protected override Button Save_button => button_pet_save;
         protected override Button Delete_button => button_pet_delete;
@@ -144,6 +144,8 @@ namespace Veterinary_CRUD_App.Views
         protected override TabPage Details_tab_page => tabPage_pet_details;
         protected override DataGridView DataGridView_Main => dataGridView_pets;
         protected override DataGridView? DataGridView_Details => dataGridView_pet_visits;
+        protected override DateTimePicker Date_Time_Picker => dateTimePicker_pet_birthdate;
+        protected override MaterialSkin.Controls.MaterialLabel Label_Date_Time_Picker_Mask => materialLabel_pet_birthday_datetime_mask;
 
         // Constructor
         public Pet_Form()

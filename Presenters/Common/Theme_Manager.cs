@@ -7,6 +7,8 @@ namespace Veterinary_CRUD_App.Presenters.Common
 {
     public class Theme_Manager
     {
+        public static event Action? Theme_Or_Color_Change;
+
         public static MaterialSkinManager material_skin_manager = MaterialSkinManager.Instance;
 
         static Theme_Manager()
@@ -25,12 +27,14 @@ namespace Veterinary_CRUD_App.Presenters.Common
         {
             material_skin_manager.Theme = theme;
             Refresh_All_Managed_Forms();
+            Theme_Or_Color_Change?.Invoke();
         }
 
         public static void Update_Color_Scheme(ColorScheme scheme)
         {
             material_skin_manager.ColorScheme = scheme;
             Refresh_All_Managed_Forms();
+            Theme_Or_Color_Change?.Invoke();
         }
 
         public static void Refresh_All_Managed_Forms()

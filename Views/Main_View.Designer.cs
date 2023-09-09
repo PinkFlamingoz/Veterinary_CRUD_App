@@ -145,9 +145,6 @@
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialMultiLineTextBox2 materialMultiLineTextBox21;
-        private MaterialSkin.Controls.MaterialMaskedTextBox materialMaskedTextBox1;
-        private MaterialSkin.Controls.MaterialMultiLineTextBox materialMultiLineTextBox1;
         private MaterialSkin.Controls.MaterialTabControl materialTabControl_menu;
         private TabPage tabPage_home;
         private TabPage tabPage_pets;

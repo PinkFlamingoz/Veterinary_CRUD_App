@@ -84,7 +84,7 @@ namespace Veterinary_CRUD_App.Views
 
         protected override TabControl Main_Tab_Control => tabControl_visits_form;
         protected override Button Search_Button => button_visit_search;
-        protected override MaterialSkin.Controls.MaterialTextBox2 Search_textBox => textBox_visit_search;
+        protected override MaterialSkin.Controls.MaterialTextBox2 Search_Text_Box => textBox_visit_search;
         protected override Button Add_new_button => button_visit_add_new_visit;
         protected override Button Save_button => button_visit_save;
         protected override Button Delete_button => button_visit_delete;
@@ -93,6 +93,8 @@ namespace Veterinary_CRUD_App.Views
         protected override TabPage List_tab_page => tabPage_visit_list;
         protected override TabPage Details_tab_page => tabPage_visit_details;
         protected override DataGridView DataGridView_Main => dataGridView_visits_pets;
+        protected override DateTimePicker Date_Time_Picker => dateTimePicker_visit_date;
+        protected override MaterialSkin.Controls.MaterialLabel Label_Date_Time_Picker_Mask => materialLabel_visit_date_datetime_mask;
 
         // Constructor
         public Visit_Form()

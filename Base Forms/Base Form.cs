@@ -1,5 +1,7 @@
-﻿using MaterialSkin.Controls;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
 using System.Reflection;
+using System.Windows.Forms;
 using Veterinary_CRUD_App.Interfaces;
 using Veterinary_CRUD_App.Presenters.Common;
 
@@ -14,6 +16,9 @@ namespace Veterinary_CRUD_App.Base_Forms
     public abstract class Base_Form : MaterialForm, IBase_View_Interface
     {
         // Common values
+
+        private readonly MaterialSkinManager material_skin_manager = MaterialSkinManager.Instance;
+
         public DataGridView I_main_data_grid_view
         {
             get => DataGridView_Main;
@@ -38,7 +43,8 @@ namespace Veterinary_CRUD_App.Base_Forms
 
         protected abstract TabControl Main_Tab_Control { get; }
         protected abstract Button Search_Button { get; }
-        protected abstract MaterialSkin.Controls.MaterialTextBox2 Search_textBox { get; }
+        protected abstract MaterialSkin.Controls.MaterialTextBox2 Search_Text_Box { get; }
+        protected abstract MaterialSkin.Controls.MaterialLabel? Label_Date_Time_Picker_Mask { get; }
         protected abstract Button Add_new_button { get; }
         protected abstract Button Save_button { get; }
         protected abstract Button Delete_button { get; }
@@ -48,6 +54,7 @@ namespace Veterinary_CRUD_App.Base_Forms
         protected abstract TabPage Details_tab_page { get; }
         protected abstract DataGridView DataGridView_Main { get; set; }
         protected virtual DataGridView? DataGridView_Details { get; set; }
+        protected abstract DateTimePicker? Date_Time_Picker { get; set; }
 
         // Event values
 
@@ -92,34 +99,64 @@ namespace Veterinary_CRUD_App.Base_Forms
         // Events subscriptions ----------------------------------------------------------------------------------------------
 
         // Initialize the form
-        protected static void Initialize_Form(MaterialForm form)
+        protected void Initialize_Form(MaterialForm form)
         {
             Theme_Manager.Apply_Theme_To_Form(form);
             Utilities.Set_Double_Buffered_Recursively(form, true);
+            Refresh_Data_Grid_View_Theme();
+            Date_Time_Picker_Mask_Value_Changed(this, EventArgs.Empty);
         }
 
         // Subscribe buttons to events # OVERRIDEN IN THE DERIVED CLASSES
         protected virtual void Subscribe_Button_Clicks_To_Invoking_Calls()
         {
             Search_Button.Click += Button_Search_Click;
-            Search_textBox.KeyDown += TextBox_Search_KeyDown;
+            Search_Text_Box.KeyDown += TextBox_Search_KeyDown;
             Add_new_button.Click += Button_Add_New_Click;
             Edit_Button.Click += Edit_Button_Click;
             Save_button.Click += Button_Save_Click;
             Delete_button.Click += Button_Delete_Click;
             Cancel_button.Click += Button_Cancel_Click;
+            Theme_Manager.Theme_Or_Color_Change += Refresh_Data_Grid_View_Theme;
+            DataGridView_Main.CellFormatting += Data_Grid_View_Cell_Formatting;
+            if (Label_Date_Time_Picker_Mask != null)
+            {
+                Label_Date_Time_Picker_Mask.Click += Label_Date_Time_Picker_Mask_Click;
+            }
+            if (Date_Time_Picker != null)
+            {
+                Date_Time_Picker.ValueChanged += Date_Time_Picker_Mask_Value_Changed;
+            }
+            if (DataGridView_Details != null)
+            {
+                DataGridView_Details.CellFormatting += Data_Grid_View_Cell_Formatting;
+            }
         }
 
         // Unsubscribe buttons from events # OVERRIDEN IN THE DERIVED CLASSES
         protected virtual void Unsubscribe_Button_Clicks_To_Invoking_Calls()
         {
             Search_Button.Click -= Button_Search_Click;
-            Search_textBox.KeyDown -= TextBox_Search_KeyDown;
+            Search_Text_Box.KeyDown -= TextBox_Search_KeyDown;
             Add_new_button.Click -= Button_Add_New_Click;
             Edit_Button.Click -= Edit_Button_Click;
             Save_button.Click -= Button_Save_Click;
             Delete_button.Click -= Button_Delete_Click;
             Cancel_button.Click -= Button_Cancel_Click;
+            Theme_Manager.Theme_Or_Color_Change -= Refresh_Data_Grid_View_Theme;
+            DataGridView_Main.CellFormatting -= Data_Grid_View_Cell_Formatting;
+            if (Label_Date_Time_Picker_Mask != null)
+            {
+                Label_Date_Time_Picker_Mask.Click -= Label_Date_Time_Picker_Mask_Click;
+            }
+            if (Date_Time_Picker != null)
+            {
+                Date_Time_Picker.ValueChanged -= Date_Time_Picker_Mask_Value_Changed;
+            }
+            if (DataGridView_Details != null)
+            {
+                DataGridView_Details.CellFormatting -= Data_Grid_View_Cell_Formatting;
+            }
         }
 
         // Unsubscribe from events by overriding the Dispose function
@@ -223,6 +260,26 @@ namespace Veterinary_CRUD_App.Base_Forms
             return Validate_Combo_Box_Selection_Event?.Invoke(combo_box) ?? false;
         }
 
+        private void Label_Date_Time_Picker_Mask_Click(object? sender, EventArgs e)
+        {
+            // When we click on the mask select the element below it aka here we select the date time picker underneath it
+            if (Date_Time_Picker != null)
+            {
+                Date_Time_Picker.Select();
+                SendKeys.Send("%{DOWN}");
+            }
+        }
+
+        // Event handler for when Date time Start value is changed
+        private void Date_Time_Picker_Mask_Value_Changed(object? sender, EventArgs e)
+        {
+            // Update the label start mask text
+            if (Label_Date_Time_Picker_Mask != null)
+            {
+                Label_Date_Time_Picker_Mask.Text = Date_Time_Picker?.Text;
+            }
+        }
+
         // Event functions ---------------------------------------------------------------------------------------------------
 
         // UI manipulation functions -----------------------------------------------------------------------------------------
@@ -305,6 +362,78 @@ namespace Veterinary_CRUD_App.Base_Forms
             I_details_data_grid_view?.ClearSelection();
         }
 
+        // Refresh the data grid view theme
+        private void Refresh_Data_Grid_View_Theme()
+        {
+            Apply_Theme_To_DataGridView(DataGridView_Main);
+            Apply_Theme_To_DataGridView(DataGridView_Details);
+        }
+
+        // Apply the theme to the data grid view
+        private void Apply_Theme_To_DataGridView(DataGridView? data_grid_view)
+        {
+            if (data_grid_view == null)
+            {
+                return;
+            }
+
+            // Set DataGridView's default styles using MaterialSkin colors
+            data_grid_view.DefaultCellStyle.Padding = new Padding(11, 11, 0, 11);
+            data_grid_view.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
+            data_grid_view.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            data_grid_view.DefaultCellStyle.Font = material_skin_manager.getFontByType(MaterialSkinManager.fontType.Body1);
+            data_grid_view.DefaultCellStyle.BackColor = material_skin_manager.ColorScheme.PrimaryColor;
+            data_grid_view.DefaultCellStyle.ForeColor = material_skin_manager.ColorScheme.TextColor;
+            data_grid_view.DefaultCellStyle.SelectionBackColor = material_skin_manager.ColorScheme.AccentColor;
+            data_grid_view.DefaultCellStyle.SelectionForeColor = material_skin_manager.ColorScheme.TextColor;
+
+            // Set Header styles
+            data_grid_view.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            data_grid_view.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            data_grid_view.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            data_grid_view.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            data_grid_view.ColumnHeadersDefaultCellStyle.Padding = new Padding(9, 16, 0, 16);
+            data_grid_view.ColumnHeadersDefaultCellStyle.Font = material_skin_manager.getFontByType(MaterialSkinManager.fontType.Subtitle1);
+            data_grid_view.ColumnHeadersDefaultCellStyle.BackColor = material_skin_manager.ColorScheme.DarkPrimaryColor;
+            data_grid_view.ColumnHeadersDefaultCellStyle.ForeColor = material_skin_manager.ColorScheme.TextColor;
+            data_grid_view.ColumnHeadersDefaultCellStyle.SelectionBackColor = material_skin_manager.ColorScheme.DarkPrimaryColor;
+            data_grid_view.ColumnHeadersDefaultCellStyle.SelectionForeColor = material_skin_manager.ColorScheme.TextColor;
+            data_grid_view.EnableHeadersVisualStyles = false;
+
+            // Row headers
+            data_grid_view.RowHeadersVisible = false;
+
+            // Other styles
+            data_grid_view.GridColor = material_skin_manager.ColorScheme.AccentColor;
+            data_grid_view.BorderStyle = BorderStyle.None;
+            data_grid_view.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            data_grid_view.BackgroundColor = material_skin_manager.ColorScheme.PrimaryColor;
+            data_grid_view.AllowUserToAddRows = false;
+            data_grid_view.AllowUserToDeleteRows = false;
+            data_grid_view.AllowUserToOrderColumns = false;
+            data_grid_view.MultiSelect = false;
+            data_grid_view.ReadOnly = true;
+            data_grid_view.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            data_grid_view.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            data_grid_view.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+        }
+
+        //  If the cell information is more than 100 characters replace the rest with three dots
+        private void Data_Grid_View_Cell_Formatting(object? sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Check if the cell value is not null and is a string
+            if (e.Value is string cell_value)
+            {
+                if (cell_value.Length > 100)
+                {
+                    // Truncate the string and add three dots at the end
+                    e.Value = cell_value[..100] + "…";
+
+                    e.FormattingApplied = true; // Indicates the formatting was applied
+                }
+            }
+        }
+
         // UI manipulation functions -----------------------------------------------------------------------------------------
     }
 
@@ -324,7 +453,7 @@ namespace Veterinary_CRUD_App.Base_Forms
 
         protected override Button Search_Button => throw new NotImplementedException(); // Or a new Button();
 
-        protected override MaterialSkin.Controls.MaterialTextBox2 Search_textBox => throw new NotImplementedException();
+        protected override MaterialSkin.Controls.MaterialTextBox2 Search_Text_Box => throw new NotImplementedException();
 
         protected override Button Add_new_button => throw new NotImplementedException();
 
@@ -341,6 +470,20 @@ namespace Veterinary_CRUD_App.Base_Forms
         protected override TabPage Details_tab_page => throw new NotImplementedException();
 
         protected override DataGridView DataGridView_Main { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        protected override DateTimePicker? Date_Time_Picker
+        {
+            get => null;
+            set
+            {
+                if (Date_Time_Picker != null)
+                {
+                    Date_Time_Picker.Value = DateTime.Now;
+                }
+            }
+        }
+
+        protected override MaterialLabel? Label_Date_Time_Picker_Mask => null;
 
         // ... override other members ...
 

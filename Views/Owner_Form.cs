@@ -45,7 +45,7 @@ namespace Veterinary_CRUD_App.Views
 
         protected override TabControl Main_Tab_Control => tabControl_owner_form;
         protected override Button Search_Button => button_owner_search;
-        protected override MaterialSkin.Controls.MaterialTextBox2 Search_textBox => textBox_owner_search;
+        protected override MaterialSkin.Controls.MaterialTextBox2 Search_Text_Box => textBox_owner_search;
         protected override Button Add_new_button => button_owner_add_owner;
         protected override Button Save_button => button_owner_save;
         protected override Button Delete_button => button_owner_delete;

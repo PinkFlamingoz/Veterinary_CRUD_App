@@ -417,8 +417,6 @@
 
         private Panel panel_application_name_container;
         private Panel panel_clock_container;
-        private MaterialSkin.Controls.MaterialLabel label_Date;
-        private MaterialSkin.Controls.MaterialLabel label_Time;
         private MaterialSkin.Controls.MaterialLabel label_heart;
         private MaterialSkin.Controls.MaterialLabel label_application_name;
         private MaterialSkin.Controls.MaterialCard materialCard1;

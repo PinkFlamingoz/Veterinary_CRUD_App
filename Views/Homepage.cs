@@ -22,7 +22,7 @@ namespace Veterinary_CRUD_App.Views
         private const int date_offset = 40;
         private const double hand_angle_offset = 90.0;
         private Bitmap? clock_face_cache;
-        private readonly MaterialSkinManager sking_manager;
+        private readonly MaterialSkinManager skin_manager;
         private readonly Font font_numbers;
         private readonly Font font_date;
         private DateTime? last_displayed_date = null;
@@ -38,9 +38,9 @@ namespace Veterinary_CRUD_App.Views
             Theme_Manager.Apply_Theme_To_Form(this);
             Utilities.Set_Double_Buffered_Recursively(this, true);
 
-            sking_manager = MaterialSkinManager.Instance;
-            font_numbers = sking_manager.getFontByType(MaterialSkinManager.fontType.H5);
-            font_date = sking_manager.getFontByType(MaterialSkinManager.fontType.H6);
+            skin_manager = MaterialSkinManager.Instance;
+            font_numbers = skin_manager.getFontByType(MaterialSkinManager.fontType.H5);
+            font_date = skin_manager.getFontByType(MaterialSkinManager.fontType.H6);
             clock_center = new Point(panel_clock.Width / 2, panel_clock.Height / 2);
         }
 
@@ -125,7 +125,7 @@ namespace Veterinary_CRUD_App.Views
         // Draws the current date at the bottom of the clock face.
         private void Draw_Clock_Face(Graphics g)
         {
-            using SolidBrush primary_brush = new(sking_manager.ColorScheme.PrimaryColor);
+            using SolidBrush primary_brush = new(skin_manager.ColorScheme.PrimaryColor);
 
             for (int i = 1; i <= 12; i++)
             {
@@ -216,8 +216,8 @@ namespace Veterinary_CRUD_App.Views
         // The clock's hands (hour, minute, and second) are then drawn on top of the cached image.
         private void Panel_Clock_Paint(object? sender, PaintEventArgs e)
         {
-            using SolidBrush primary_brush = new(sking_manager.ColorScheme.PrimaryColor),
-                             secondary_brush = new(sking_manager.ColorScheme.AccentColor),
+            using SolidBrush primary_brush = new(skin_manager.ColorScheme.PrimaryColor),
+                             secondary_brush = new(skin_manager.ColorScheme.AccentColor),
                              seconds_brush = new(Color.Red);
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
