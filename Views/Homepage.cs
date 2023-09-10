@@ -125,7 +125,7 @@ namespace Veterinary_CRUD_App.Views
         // Draws the current date at the bottom of the clock face.
         private void Draw_Clock_Face(Graphics g)
         {
-            using SolidBrush primary_brush = new(skin_manager.ColorScheme.PrimaryColor);
+            using SolidBrush primary_brush = new(skin_manager.ColorScheme.LightPrimaryColor);
 
             for (int i = 1; i <= 12; i++)
             {
@@ -216,7 +216,7 @@ namespace Veterinary_CRUD_App.Views
         // The clock's hands (hour, minute, and second) are then drawn on top of the cached image.
         private void Panel_Clock_Paint(object? sender, PaintEventArgs e)
         {
-            using SolidBrush primary_brush = new(skin_manager.ColorScheme.PrimaryColor),
+            using SolidBrush primary_brush = new(skin_manager.ColorScheme.LightPrimaryColor),
                              secondary_brush = new(skin_manager.ColorScheme.AccentColor),
                              seconds_brush = new(Color.Red);
 
