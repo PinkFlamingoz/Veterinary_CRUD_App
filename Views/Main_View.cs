@@ -140,7 +140,7 @@ namespace Veterinary_CRUD_App.Views
                     form.Hide();
                 }
             }
-            await Fade_In();
+            // await Fade_In();
         }
 
         // Fade in Form

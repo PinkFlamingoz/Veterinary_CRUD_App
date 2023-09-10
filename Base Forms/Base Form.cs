@@ -300,13 +300,13 @@ namespace Veterinary_CRUD_App.Base_Forms
         {
             if (Main_Tab_Control.SelectedTab != List_tab_page)
             {
-                // Hide_Content(Details_tab_page);
-                //
-                // // Only show if it's not already visible.
-                // if (!List_tab_page.Controls[0].Visible)
-                // {
-                //     Show_Content(List_tab_page);
-                // }
+                Hide_Content(Details_tab_page);
+
+                // Only show if it's not already visible.
+                if (!List_tab_page.Controls[0].Visible)
+                {
+                    Show_Content(List_tab_page);
+                }
 
                 Main_Tab_Control.SelectedTab = List_tab_page;  // Ensure the list tab is selected.
             }
@@ -317,13 +317,13 @@ namespace Veterinary_CRUD_App.Base_Forms
         {
             if (Main_Tab_Control.SelectedTab != Details_tab_page)
             {
-                // Hide_Content(List_tab_page);
-                //
-                // // Only show if it's not already visible.
-                // if (!Details_tab_page.Controls[0].Visible)
-                // {
-                //     Show_Content(Details_tab_page);
-                // }
+                Hide_Content(List_tab_page);
+
+                // Only show if it's not already visible.
+                if (!Details_tab_page.Controls[0].Visible)
+                {
+                    Show_Content(Details_tab_page);
+                }
 
                 Main_Tab_Control.SelectedTab = Details_tab_page;  // Ensure the details tab is selected.
             }
