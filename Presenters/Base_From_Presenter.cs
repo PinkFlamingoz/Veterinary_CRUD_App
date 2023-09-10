@@ -145,9 +145,10 @@ namespace Veterinary_CRUD_App.Presenters
         }
 
         // Confirm deletion option
-        private static bool Confirm_Deletion()
+        private static bool Confirm_Deletion(int item_id)
         {
-            var answer = MessageBox.Show(Messages.Delete_confirmation, Messages.Warning_title, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var message = string.Format(Messages.Delete_confirmation, item_id);
+            var answer = MessageBox.Show(message, Messages.Warning_title, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return answer == DialogResult.Yes;
         }
 
@@ -271,9 +272,9 @@ namespace Veterinary_CRUD_App.Presenters
                 return;
             }
 
-            if (Confirm_Deletion())
+            int item_id = Get_Identifier_From_Item(item);
+            if (Confirm_Deletion(item_id))
             {
-                int item_id = Get_Identifier_From_Item(item);
                 Perform_Deletion(item_id, args);
             }
             else
@@ -394,7 +395,7 @@ namespace Veterinary_CRUD_App.Presenters
         // Main method to delete an item from another form
         protected void Delete_Item_From_Another_Form(Delete_From_Another_Form_Request_Event_Args args)
         {
-            if (!Confirm_Deletion())
+            if (!Confirm_Deletion(args.Id))
             {
                 MessageBox.Show(Messages.Delete_fail, Messages.Delete_fail, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

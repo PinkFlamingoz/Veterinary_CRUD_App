@@ -56,7 +56,7 @@ namespace Veterinary_CRUD_App.Views
             FormClosed -= Main_View_Form_Closed;
         }
 
-        private void Selected_Index_Changed(object? sender, EventArgs e)
+        public void Selected_Index_Changed(object? sender, EventArgs e)
         {
             switch (materialTabControl_menu.SelectedTab.Name)
             {
@@ -131,7 +131,7 @@ namespace Veterinary_CRUD_App.Views
         // UI manipulation functions -----------------------------------------------------------------------------------------
 
         // On opening a form close the other forms
-        public void Close_All_Forms_Except(Type exclude)
+        public async void Close_All_Forms_Except(Type exclude)
         {
             foreach (Form form in this.MdiChildren)
             {
@@ -140,6 +140,18 @@ namespace Veterinary_CRUD_App.Views
                     form.Hide();
                 }
             }
+            await Fade_In();
+        }
+
+        // Fade in Form
+        private async Task Fade_In()
+        {
+            for (double i = 0; i < 1.0; i += 0.05)
+            {
+                this.Opacity = i;
+                await Task.Delay(25);
+            }
+            this.Opacity = 1;
         }
 
         // UI manipulation functions -----------------------------------------------------------------------------------------

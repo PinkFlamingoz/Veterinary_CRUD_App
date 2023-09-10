@@ -238,7 +238,14 @@ namespace Veterinary_CRUD_App.Presenters
             // Set the tab based on the opened form
             if (main_view_interface.Form_To_Tab_Map.TryGetValue(e.Form_Type, out string? tab_page_name))
             {
+                // Unsubscribe from the Selected Index Changed event to prevent it from being triggered
+                main_view_interface.Material_Tab_Control_Menu.SelectedIndexChanged -= main_view_interface.Selected_Index_Changed;
+
+                // Change the selected tab
                 main_view_interface.Material_Tab_Control_Menu.SelectedTab = main_view_interface.Material_Tab_Control_Menu.TabPages[tab_page_name];
+
+                // Re-subscribe to the Selected Index Changed event
+                main_view_interface.Material_Tab_Control_Menu.SelectedIndexChanged += main_view_interface.Selected_Index_Changed;
             }
         }
 

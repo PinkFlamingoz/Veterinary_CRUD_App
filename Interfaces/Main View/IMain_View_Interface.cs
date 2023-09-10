@@ -24,8 +24,13 @@ namespace Veterinary_CRUD_App.Interfaces
         // It will alert any listeners (args.g., a presenter or controller) that the user has chosen to interact with or view the Homepage section.
         event EventHandler? Show_Homepage_View;
 
+        // Represents a dictionary to keep track of what page tab to open in the main menu
         Dictionary<Type, string> Form_To_Tab_Map { get; }
 
+        // Represents a access point to the Tab Control so we can access it in the presenter
         MaterialTabControl Material_Tab_Control_Menu { get; }
+
+        // Represents a access point to the Tab Control so we can access it in the presenter
+        void Selected_Index_Changed(object? sender, EventArgs e);
     }
 }

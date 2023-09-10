@@ -7,7 +7,7 @@
 
         public static string Edit_success => "Edit successful!";
         public static string Add_success => "Add successful!";
-        public static string Delete_confirmation => "Confirm Deletion";
+        public static string Delete_confirmation => "Are you sure you want to delete the item with ID: {0}?";
         public static string Warning_title => "Warning";
         public static string Delete_success => "Delete Success";
         public static string Delete_fail => "Delete Failed";

@@ -256,9 +256,9 @@ namespace Veterinary_CRUD_App.Base_Forms
         // Raise a event to open a form # CALLED IN THE DERIVED CLASSES
         protected void Raise_Open_Form_Event(Form_Open_Request_Event_Args args)
         {
-            Open_Form_Event?.Invoke(args);
-
             Show_List_Tab_Page();
+
+            Open_Form_Event?.Invoke(args);
         }
 
         // Raise a event to delete an item from another form # CALLED IN THE DERIVED CLASS
