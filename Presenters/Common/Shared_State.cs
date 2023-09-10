@@ -9,7 +9,7 @@
         // The ID of the currently selected or edited item.
         public static int? Current_item_id { get; set; }
 
-        // A collection that maps string keys to BindingSource objects.
+        // A collection that maps string keys to Binding Source objects.
         // Associating named data sources to their respective grid views.
         public static Dictionary<string, BindingSource> Data_Grid_View_Binding_sources { get; set; } = new Dictionary<string, BindingSource>();
 
@@ -17,12 +17,12 @@
         // Loading data into the data grid views.
         public static Dictionary<string, Func<IEnumerable<object>>> Data_Grid_View_Load_functions { get; set; } = new Dictionary<string, Func<IEnumerable<object>>>();
 
-        // A list containing DataGridView objects that are currently subscribed to events.
+        // A list containing Data Grid View objects that are currently subscribed to events.
         // Facilitates centralized management and unsubscription from events.
-        public static List<DataGridView> Subscribed_Grid_Views { get; set; } = new List<DataGridView>();
+        public static List<DataGridView> Subscribed_Data_Grid_Views { get; set; } = new List<DataGridView>();
 
         // A collection that maps string keys to Combo_Box_Configuration objects.
-        // Configurations/settings associated with combo boxes in the application.
+        // Configurations/settings associated with Combo Boxes in the application.
         public static Dictionary<string, Combo_Box_Configuration> Combo_Box_Configurations { get; private set; } = new Dictionary<string, Combo_Box_Configuration>();
     }
 }

@@ -23,7 +23,7 @@ namespace Veterinary_CRUD_App.Presenters.Common
             return service_provider?.GetService(service_type);
         }
 
-        // Allows setting the service provider. Used after building the DI container.
+        // Allows setting the service provider, used after building the DI container.
         public static void Set_Service_Provider(ServiceProvider Service_provider)
         {
             service_provider = Service_provider;

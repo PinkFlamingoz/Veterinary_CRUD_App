@@ -4,7 +4,7 @@ using Veterinary_CRUD_App.Base_Forms;
 using Veterinary_CRUD_App.Presenters;
 using Veterinary_CRUD_App.Interfaces.Visits;
 using Veterinary_CRUD_App.Interfaces.Owner;
-using System.Reflection;
+using MaterialSkin.Controls;
 
 namespace Veterinary_CRUD_App.Views
 {
@@ -134,7 +134,7 @@ namespace Veterinary_CRUD_App.Views
 
         protected override TabControl Main_Tab_Control => tabControl_pets_form;
         protected override Button Search_Button => button_pet_search;
-        protected override MaterialSkin.Controls.MaterialTextBox2 Search_Text_Box => textBox_pet_search;
+        protected override MaterialTextBox2 Search_Text_Box => textBox_pet_search;
         protected override Button Add_new_button => button_pet_add_new;
         protected override Button Save_button => button_pet_save;
         protected override Button Delete_button => button_pet_delete;
@@ -142,10 +142,12 @@ namespace Veterinary_CRUD_App.Views
         protected override Button Edit_Button => button_pet_edit;
         protected override TabPage List_tab_page => tabPage_pet_list;
         protected override TabPage Details_tab_page => tabPage_pet_details;
-        protected override DataGridView DataGridView_Main => dataGridView_pets;
-        protected override DataGridView? DataGridView_Details => dataGridView_pet_visits;
+        protected override DataGridView Data_Grid_View_Main => dataGridView_pets;
+        protected override DataGridView? Data_Grid_View_Details => dataGridView_pet_visits;
         protected override DateTimePicker Date_Time_Picker => dateTimePicker_pet_birthdate;
-        protected override MaterialSkin.Controls.MaterialLabel Label_Date_Time_Picker_Mask => materialLabel_pet_birthday_datetime_mask;
+        protected override MaterialLabel Label_Date_Time_Picker_Mask => materialLabel_pet_birthday_datetime_mask;
+        protected override MaterialTextBox2 ID_Text_Box_Mask => materialTextBox21_pet_id_mask;
+        protected override NumericUpDown Numeric_Up_Down_ID_Of_Item => numericUpDown_pet_id;
 
         // Constructor
         public Pet_Form()
@@ -255,5 +257,7 @@ namespace Veterinary_CRUD_App.Views
         }
 
         // Event functions ---------------------------------------------------------------------------------------------------
+
+        // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     }
 }

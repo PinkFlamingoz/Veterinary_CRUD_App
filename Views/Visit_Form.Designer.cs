@@ -39,11 +39,10 @@
             button_visit_search = new MaterialSkin.Controls.MaterialButton();
             tabPage_visit_details = new TabPage();
             panel_container = new Panel();
+            materialTextBox21_visit_id_mask = new MaterialSkin.Controls.MaterialTextBox2();
             materialLabel_visit_date_datetime_mask = new MaterialSkin.Controls.MaterialLabel();
             materialLabel_visits_pet = new MaterialSkin.Controls.MaterialLabel();
-            materialLabel_visit_id = new MaterialSkin.Controls.MaterialLabel();
             materialDivider5 = new MaterialSkin.Controls.MaterialDivider();
-            materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
             numericUpDown_visit_id = new NumericUpDown();
             textBox_visit_description = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             materialLabel_visit_date = new MaterialSkin.Controls.MaterialLabel();
@@ -245,11 +244,10 @@
             // 
             // panel_container
             // 
+            panel_container.Controls.Add(materialTextBox21_visit_id_mask);
             panel_container.Controls.Add(materialLabel_visit_date_datetime_mask);
             panel_container.Controls.Add(materialLabel_visits_pet);
-            panel_container.Controls.Add(materialLabel_visit_id);
             panel_container.Controls.Add(materialDivider5);
-            panel_container.Controls.Add(materialDivider4);
             panel_container.Controls.Add(numericUpDown_visit_id);
             panel_container.Controls.Add(textBox_visit_description);
             panel_container.Controls.Add(materialLabel_visit_date);
@@ -265,6 +263,36 @@
             panel_container.Padding = new Padding(22);
             panel_container.Size = new Size(1580, 860);
             panel_container.TabIndex = 33;
+            // 
+            // materialTextBox21_visit_id_mask
+            // 
+            materialTextBox21_visit_id_mask.Anchor = AnchorStyles.None;
+            materialTextBox21_visit_id_mask.AnimateReadOnly = true;
+            materialTextBox21_visit_id_mask.BackgroundImageLayout = ImageLayout.None;
+            materialTextBox21_visit_id_mask.CharacterCasing = CharacterCasing.Normal;
+            materialTextBox21_visit_id_mask.Depth = 0;
+            materialTextBox21_visit_id_mask.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialTextBox21_visit_id_mask.HideSelection = true;
+            materialTextBox21_visit_id_mask.LeadingIcon = Properties.Resources.icons8_appointment_64;
+            materialTextBox21_visit_id_mask.Location = new Point(642, 48);
+            materialTextBox21_visit_id_mask.MaxLength = 32767;
+            materialTextBox21_visit_id_mask.MouseState = MaterialSkin.MouseState.OUT;
+            materialTextBox21_visit_id_mask.Name = "materialTextBox21_visit_id_mask";
+            materialTextBox21_visit_id_mask.PasswordChar = '\0';
+            materialTextBox21_visit_id_mask.PrefixSuffix = MaterialSkin.Controls.MaterialTextBox2.PrefixSuffixTypes.Prefix;
+            materialTextBox21_visit_id_mask.PrefixSuffixText = "Visit ID";
+            materialTextBox21_visit_id_mask.ReadOnly = true;
+            materialTextBox21_visit_id_mask.RightToLeft = RightToLeft.No;
+            materialTextBox21_visit_id_mask.SelectedText = "";
+            materialTextBox21_visit_id_mask.SelectionLength = 0;
+            materialTextBox21_visit_id_mask.SelectionStart = 0;
+            materialTextBox21_visit_id_mask.ShortcutsEnabled = true;
+            materialTextBox21_visit_id_mask.Size = new Size(169, 48);
+            materialTextBox21_visit_id_mask.TabIndex = 44;
+            materialTextBox21_visit_id_mask.TabStop = false;
+            materialTextBox21_visit_id_mask.TextAlign = HorizontalAlignment.Left;
+            materialTextBox21_visit_id_mask.TrailingIcon = null;
+            materialTextBox21_visit_id_mask.UseSystemPasswordChar = false;
             // 
             // materialLabel_visit_date_datetime_mask
             // 
@@ -296,20 +324,6 @@
             materialLabel_visits_pet.TabIndex = 42;
             materialLabel_visits_pet.Text = "Pet";
             // 
-            // materialLabel_visit_id
-            // 
-            materialLabel_visit_id.Anchor = AnchorStyles.None;
-            materialLabel_visit_id.AutoSize = true;
-            materialLabel_visit_id.Depth = 0;
-            materialLabel_visit_id.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel_visit_id.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel_visit_id.Location = new Point(646, 48);
-            materialLabel_visit_id.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel_visit_id.Name = "materialLabel_visit_id";
-            materialLabel_visit_id.Size = new Size(65, 24);
-            materialLabel_visit_id.TabIndex = 40;
-            materialLabel_visit_id.Text = "Visit ID";
-            // 
             // materialDivider5
             // 
             materialDivider5.Anchor = AnchorStyles.None;
@@ -322,18 +336,6 @@
             materialDivider5.TabIndex = 31;
             materialDivider5.Text = "materialDivider5";
             // 
-            // materialDivider4
-            // 
-            materialDivider4.Anchor = AnchorStyles.None;
-            materialDivider4.BackColor = Color.FromArgb(30, 0, 0, 0);
-            materialDivider4.Depth = 0;
-            materialDivider4.Location = new Point(647, 75);
-            materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
-            materialDivider4.Name = "materialDivider4";
-            materialDivider4.Size = new Size(133, 3);
-            materialDivider4.TabIndex = 41;
-            materialDivider4.Text = "materialDivider4";
-            // 
             // numericUpDown_visit_id
             // 
             numericUpDown_visit_id.Anchor = AnchorStyles.None;
@@ -341,7 +343,7 @@
             numericUpDown_visit_id.BorderStyle = BorderStyle.None;
             numericUpDown_visit_id.Enabled = false;
             numericUpDown_visit_id.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown_visit_id.Location = new Point(647, 90);
+            numericUpDown_visit_id.Location = new Point(642, 48);
             numericUpDown_visit_id.Name = "numericUpDown_visit_id";
             numericUpDown_visit_id.ReadOnly = true;
             numericUpDown_visit_id.Size = new Size(164, 32);
@@ -575,8 +577,6 @@
         private MaterialSkin.Controls.MaterialButton button_visit_edit;
         private MaterialSkin.Controls.MaterialButton button_visit_add_new_visit;
         private MaterialSkin.Controls.MaterialTextBox2 textBox_visit_type;
-        private MaterialSkin.Controls.MaterialDivider materialDivider4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel_visit_id;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialButton button_visit_save;
         private MaterialSkin.Controls.MaterialButton button_visit_edit_pet;
@@ -588,5 +588,6 @@
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 textBox_visit_description;
         private Panel panel_conatiner_main_buttons;
         private MaterialSkin.Controls.MaterialLabel materialLabel_visit_date_datetime_mask;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21_visit_id_mask;
     }
 }

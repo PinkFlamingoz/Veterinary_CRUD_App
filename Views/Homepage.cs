@@ -53,8 +53,8 @@ namespace Veterinary_CRUD_App.Views
         protected virtual void Subscribe_Controls()
         {
             panel_clock.Paint += Panel_Clock_Paint;
-            materialLabel_link_lable.Click += LinkLabel_Me_LinkClicked;
-            FormClosed += Homepage_View_FormClosed;
+            materialLabel_link_lable.Click += Link_Label_Me_Link_Clicked;
+            FormClosed += Homepage_View_Form_Closed;
         }
 
         // Unsubscribe buttons from events
@@ -65,12 +65,12 @@ namespace Veterinary_CRUD_App.Views
             font_numbers?.Dispose();
             font_date?.Dispose();
             panel_clock.Paint -= Panel_Clock_Paint;
-            materialLabel_link_lable.Click -= LinkLabel_Me_LinkClicked;
-            FormClosed -= Homepage_View_FormClosed;
+            materialLabel_link_lable.Click -= Link_Label_Me_Link_Clicked;
+            FormClosed -= Homepage_View_Form_Closed;
         }
 
         // Unsubscribe from events by overriding the Dispose function
-        private void Homepage_View_FormClosed(object? sender, FormClosedEventArgs e)
+        private void Homepage_View_Form_Closed(object? sender, FormClosedEventArgs e)
         {
             // Unsubscribe from events
             Unsubscribe_Controls();
@@ -237,50 +237,50 @@ namespace Veterinary_CRUD_App.Views
         // CLOCK -------------------------------------------------------------------------------------------------------------
 
         // Theme change ------------------------------------------------------------------------------------------------------
-        private void MaterialSwitch_Theme_CheckedChanged(object sender, EventArgs e)
+        private void Material_Switch_Theme_Checked_Changed(object sender, EventArgs e)
         {
             var theme = materialSwitch_theme.Checked ? MaterialSkinManager.Themes.DARK : MaterialSkinManager.Themes.LIGHT;
             Theme_Manager.Update_Theme(theme);
         }
 
-        private void MaterialRadioButton_Color_Green_CheckedChanged(object sender, EventArgs e)
+        private void Material_Radio_Button_Color_Green_Checked_Changed(object sender, EventArgs e)
         {
-            Theme_Manager.Update_Color_Scheme(new ColorScheme(Primary.Green800, Primary.Green900, Primary.Green500, Accent.Green200, TextShade.WHITE));
+            Theme_Manager.Update_Color_Scheme(new ColorScheme(Primary.Green800, Primary.Green900, Primary.Green500, Accent.Green700, TextShade.WHITE));
             Invalidate_Clock_Face_Cache();
             panel_clock.Invalidate();
         }
 
-        private void MaterialRadioButton_Color_Amber_CheckedChanged(object sender, EventArgs e)
+        private void Material_Radio_Button_Color_Amber_Checked_Changed(object sender, EventArgs e)
         {
             Theme_Manager.Update_Color_Scheme(new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Amber500, Accent.Amber200, TextShade.WHITE));
             Invalidate_Clock_Face_Cache();
             panel_clock.Invalidate();
         }
 
-        private void MaterialRadioButton_Color_Pink_CheckedChanged(object sender, EventArgs e)
+        private void Material_Radio_Button_Color_Pink_Checked_Changed(object sender, EventArgs e)
         {
             Theme_Manager.Update_Color_Scheme(new ColorScheme(Primary.Pink800, Primary.Pink900, Primary.Pink500, Accent.Pink200, TextShade.WHITE));
             Invalidate_Clock_Face_Cache();
             panel_clock.Invalidate();
         }
 
-        private void MaterialRadioButton_Color_Blue_CheckedChanged(object sender, EventArgs e)
+        private void Material_Radio_Button_Color_Blue_Checked_Changed(object sender, EventArgs e)
         {
-            Theme_Manager.Update_Color_Scheme(new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE));
+            Theme_Manager.Update_Color_Scheme(new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.Blue200, TextShade.WHITE));
             Invalidate_Clock_Face_Cache();
             panel_clock.Invalidate();
         }
 
-        private void MaterialRadioButton_Color_Red_CheckedChanged(object sender, EventArgs e)
+        private void Material_Radio_Button_Color_Red_Checked_Changed(object sender, EventArgs e)
         {
             Theme_Manager.Update_Color_Scheme(new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.Red200, TextShade.WHITE));
             Invalidate_Clock_Face_Cache();
             panel_clock.Invalidate();
         }
 
-        private void MaterialRadioButton_Color_Yellow_CheckedChanged(object sender, EventArgs e)
+        private void Material_Radio_Button_Color_Yellow_Checked_Changed(object sender, EventArgs e)
         {
-            Theme_Manager.Update_Color_Scheme(new ColorScheme(Primary.Yellow800, Primary.Yellow900, Primary.Yellow500, Accent.Yellow200, TextShade.WHITE));
+            Theme_Manager.Update_Color_Scheme(new ColorScheme(Primary.Yellow800, Primary.Yellow900, Primary.Yellow500, Accent.Yellow700, TextShade.BLACK));
             Invalidate_Clock_Face_Cache();
             panel_clock.Invalidate();
         }
@@ -288,7 +288,7 @@ namespace Veterinary_CRUD_App.Views
         // Theme change ------------------------------------------------------------------------------------------------------
 
         // Link myself
-        private void LinkLabel_Me_LinkClicked(object? sender, EventArgs e)
+        private void Link_Label_Me_Link_Clicked(object? sender, EventArgs e)
         {
             try
             {

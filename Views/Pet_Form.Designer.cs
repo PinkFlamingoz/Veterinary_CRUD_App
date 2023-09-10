@@ -48,6 +48,7 @@
             tabPage_pet_details = new TabPage();
             panel_container_data = new Panel();
             panel_container = new Panel();
+            materialTextBox21_pet_id_mask = new MaterialSkin.Controls.MaterialTextBox2();
             materialLabel_pet_birthday_datetime_mask = new MaterialSkin.Controls.MaterialLabel();
             panel_buttons_container = new Panel();
             button_pet_upload_picture = new MaterialSkin.Controls.MaterialButton();
@@ -60,8 +61,6 @@
             button_pet_edit_visits = new MaterialSkin.Controls.MaterialButton();
             materialDivider5 = new MaterialSkin.Controls.MaterialDivider();
             materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
-            materialLabel_pet_id = new MaterialSkin.Controls.MaterialLabel();
             comboBox_pet_owner_id = new MaterialSkin.Controls.MaterialComboBox();
             materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
             materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
@@ -72,6 +71,7 @@
             textBox_pet_colour = new MaterialSkin.Controls.MaterialTextBox2();
             materialLabel_pet_birthday = new MaterialSkin.Controls.MaterialLabel();
             textBox_pet_sex = new MaterialSkin.Controls.MaterialTextBox2();
+            materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
             ((System.ComponentModel.ISupportInitialize)dataGridView_pets).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_pet_id).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_pet_age).BeginInit();
@@ -253,7 +253,7 @@
             numericUpDown_pet_id.BorderStyle = BorderStyle.None;
             numericUpDown_pet_id.Enabled = false;
             numericUpDown_pet_id.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown_pet_id.Location = new Point(561, 257);
+            numericUpDown_pet_id.Location = new Point(558, 245);
             numericUpDown_pet_id.Name = "numericUpDown_pet_id";
             numericUpDown_pet_id.ReadOnly = true;
             numericUpDown_pet_id.Size = new Size(164, 32);
@@ -265,7 +265,7 @@
             numericUpDown_pet_age.AutoSize = true;
             numericUpDown_pet_age.BorderStyle = BorderStyle.None;
             numericUpDown_pet_age.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown_pet_age.Location = new Point(561, 466);
+            numericUpDown_pet_age.Location = new Point(561, 447);
             numericUpDown_pet_age.Name = "numericUpDown_pet_age";
             numericUpDown_pet_age.Size = new Size(166, 32);
             numericUpDown_pet_age.TabIndex = 23;
@@ -274,7 +274,7 @@
             // 
             dateTimePicker_pet_birthdate.Anchor = AnchorStyles.None;
             dateTimePicker_pet_birthdate.CustomFormat = "MMM dd, yyyy";
-            dateTimePicker_pet_birthdate.Location = new Point(560, 376);
+            dateTimePicker_pet_birthdate.Location = new Point(560, 357);
             dateTimePicker_pet_birthdate.Name = "dateTimePicker_pet_birthdate";
             dateTimePicker_pet_birthdate.Size = new Size(165, 23);
             dateTimePicker_pet_birthdate.TabIndex = 22;
@@ -369,15 +369,15 @@
             // 
             // panel_container
             // 
+            panel_container.Controls.Add(materialDivider4);
+            panel_container.Controls.Add(materialTextBox21_pet_id_mask);
             panel_container.Controls.Add(materialLabel_pet_birthday_datetime_mask);
             panel_container.Controls.Add(panel_buttons_container);
             panel_container.Controls.Add(materialDivider5);
             panel_container.Controls.Add(numericUpDown_pet_age);
             panel_container.Controls.Add(materialLabel4);
             panel_container.Controls.Add(pictureBox_pet_picture);
-            panel_container.Controls.Add(materialDivider4);
             panel_container.Controls.Add(dateTimePicker_pet_birthdate);
-            panel_container.Controls.Add(materialLabel_pet_id);
             panel_container.Controls.Add(comboBox_pet_owner_id);
             panel_container.Controls.Add(materialDivider3);
             panel_container.Controls.Add(numericUpDown_pet_id);
@@ -397,6 +397,36 @@
             panel_container.Size = new Size(804, 860);
             panel_container.TabIndex = 33;
             // 
+            // materialTextBox21_pet_id_mask
+            // 
+            materialTextBox21_pet_id_mask.Anchor = AnchorStyles.None;
+            materialTextBox21_pet_id_mask.AnimateReadOnly = true;
+            materialTextBox21_pet_id_mask.BackgroundImageLayout = ImageLayout.None;
+            materialTextBox21_pet_id_mask.CharacterCasing = CharacterCasing.Normal;
+            materialTextBox21_pet_id_mask.Depth = 0;
+            materialTextBox21_pet_id_mask.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialTextBox21_pet_id_mask.HideSelection = true;
+            materialTextBox21_pet_id_mask.LeadingIcon = Properties.Resources.Default_Pet_Image;
+            materialTextBox21_pet_id_mask.Location = new Point(558, 242);
+            materialTextBox21_pet_id_mask.MaxLength = 32767;
+            materialTextBox21_pet_id_mask.MouseState = MaterialSkin.MouseState.OUT;
+            materialTextBox21_pet_id_mask.Name = "materialTextBox21_pet_id_mask";
+            materialTextBox21_pet_id_mask.PasswordChar = '\0';
+            materialTextBox21_pet_id_mask.PrefixSuffix = MaterialSkin.Controls.MaterialTextBox2.PrefixSuffixTypes.Prefix;
+            materialTextBox21_pet_id_mask.PrefixSuffixText = "Pet ID";
+            materialTextBox21_pet_id_mask.ReadOnly = true;
+            materialTextBox21_pet_id_mask.RightToLeft = RightToLeft.No;
+            materialTextBox21_pet_id_mask.SelectedText = "";
+            materialTextBox21_pet_id_mask.SelectionLength = 0;
+            materialTextBox21_pet_id_mask.SelectionStart = 0;
+            materialTextBox21_pet_id_mask.ShortcutsEnabled = true;
+            materialTextBox21_pet_id_mask.Size = new Size(167, 48);
+            materialTextBox21_pet_id_mask.TabIndex = 36;
+            materialTextBox21_pet_id_mask.TabStop = false;
+            materialTextBox21_pet_id_mask.TextAlign = HorizontalAlignment.Left;
+            materialTextBox21_pet_id_mask.TrailingIcon = null;
+            materialTextBox21_pet_id_mask.UseSystemPasswordChar = false;
+            // 
             // materialLabel_pet_birthday_datetime_mask
             // 
             materialLabel_pet_birthday_datetime_mask.Anchor = AnchorStyles.None;
@@ -405,7 +435,7 @@
             materialLabel_pet_birthday_datetime_mask.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialLabel_pet_birthday_datetime_mask.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
             materialLabel_pet_birthday_datetime_mask.HighEmphasis = true;
-            materialLabel_pet_birthday_datetime_mask.Location = new Point(560, 370);
+            materialLabel_pet_birthday_datetime_mask.Location = new Point(560, 351);
             materialLabel_pet_birthday_datetime_mask.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel_pet_birthday_datetime_mask.Name = "materialLabel_pet_birthday_datetime_mask";
             materialLabel_pet_birthday_datetime_mask.Size = new Size(165, 30);
@@ -623,32 +653,6 @@
             materialLabel4.TabIndex = 30;
             materialLabel4.Text = "Owner";
             // 
-            // materialDivider4
-            // 
-            materialDivider4.Anchor = AnchorStyles.None;
-            materialDivider4.BackColor = Color.FromArgb(30, 0, 0, 0);
-            materialDivider4.Depth = 0;
-            materialDivider4.Location = new Point(561, 245);
-            materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
-            materialDivider4.Name = "materialDivider4";
-            materialDivider4.Size = new Size(133, 3);
-            materialDivider4.TabIndex = 29;
-            materialDivider4.Text = "materialDivider4";
-            // 
-            // materialLabel_pet_id
-            // 
-            materialLabel_pet_id.Anchor = AnchorStyles.None;
-            materialLabel_pet_id.AutoSize = true;
-            materialLabel_pet_id.Depth = 0;
-            materialLabel_pet_id.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel_pet_id.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel_pet_id.Location = new Point(560, 218);
-            materialLabel_pet_id.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel_pet_id.Name = "materialLabel_pet_id";
-            materialLabel_pet_id.Size = new Size(56, 24);
-            materialLabel_pet_id.TabIndex = 28;
-            materialLabel_pet_id.Text = "Pet ID";
-            // 
             // comboBox_pet_owner_id
             // 
             comboBox_pet_owner_id.Anchor = AnchorStyles.None;
@@ -689,7 +693,7 @@
             materialDivider2.Anchor = AnchorStyles.None;
             materialDivider2.BackColor = Color.FromArgb(30, 0, 0, 0);
             materialDivider2.Depth = 0;
-            materialDivider2.Location = new Point(561, 450);
+            materialDivider2.Location = new Point(561, 431);
             materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
             materialDivider2.Name = "materialDivider2";
             materialDivider2.Size = new Size(133, 3);
@@ -733,7 +737,7 @@
             materialDivider1.Anchor = AnchorStyles.None;
             materialDivider1.BackColor = Color.FromArgb(30, 0, 0, 0);
             materialDivider1.Depth = 0;
-            materialDivider1.Location = new Point(559, 352);
+            materialDivider1.Location = new Point(559, 333);
             materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             materialDivider1.Name = "materialDivider1";
             materialDivider1.Size = new Size(133, 3);
@@ -779,7 +783,7 @@
             materialLabel_pet_age.Depth = 0;
             materialLabel_pet_age.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel_pet_age.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel_pet_age.Location = new Point(561, 423);
+            materialLabel_pet_age.Location = new Point(561, 404);
             materialLabel_pet_age.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel_pet_age.Name = "materialLabel_pet_age";
             materialLabel_pet_age.Size = new Size(36, 24);
@@ -825,7 +829,7 @@
             materialLabel_pet_birthday.Depth = 0;
             materialLabel_pet_birthday.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel_pet_birthday.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel_pet_birthday.Location = new Point(558, 325);
+            materialLabel_pet_birthday.Location = new Point(558, 306);
             materialLabel_pet_birthday.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel_pet_birthday.Name = "materialLabel_pet_birthday";
             materialLabel_pet_birthday.Size = new Size(76, 24);
@@ -863,6 +867,18 @@
             textBox_pet_sex.TextAlign = HorizontalAlignment.Left;
             textBox_pet_sex.TrailingIcon = null;
             textBox_pet_sex.UseSystemPasswordChar = false;
+            // 
+            // materialDivider4
+            // 
+            materialDivider4.Anchor = AnchorStyles.None;
+            materialDivider4.BackColor = Color.FromArgb(30, 0, 0, 0);
+            materialDivider4.Depth = 0;
+            materialDivider4.Location = new Point(575, 233);
+            materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
+            materialDivider4.Name = "materialDivider4";
+            materialDivider4.Size = new Size(133, 3);
+            materialDivider4.TabIndex = 37;
+            materialDivider4.Text = "materialDivider4";
             // 
             // Pet_Form
             // 
@@ -913,8 +929,6 @@
         private MaterialSkin.Controls.MaterialTextBox2 textBox_pet_type;
         private MaterialSkin.Controls.MaterialLabel materialLabel_pet_age;
         private MaterialSkin.Controls.MaterialLabel materialLabel_pet_birthday;
-        private MaterialSkin.Controls.MaterialDivider materialDivider4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel_pet_id;
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
         private MaterialSkin.Controls.MaterialDivider materialDivider2;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
@@ -933,5 +947,7 @@
         private Panel panel_container_data;
         private Panel panel_conatiner_main_buttons;
         private MaterialSkin.Controls.MaterialLabel materialLabel_pet_birthday_datetime_mask;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21_pet_id_mask;
+        private MaterialSkin.Controls.MaterialDivider materialDivider4;
     }
 }

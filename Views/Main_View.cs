@@ -1,6 +1,4 @@
 ﻿using MaterialSkin.Controls;
-using System.Diagnostics;
-using System.Reflection;
 using Veterinary_CRUD_App.Interfaces;
 using Veterinary_CRUD_App.Presenters.Common;
 
@@ -9,6 +7,16 @@ namespace Veterinary_CRUD_App.Views
     public partial class Main_View : MaterialForm, IMain_View_Interface
     {
         // Variables
+
+        public Dictionary<Type, string> Form_To_Tab_Map { get; } = new()
+        {
+            { typeof(Homepage), nameof(tabPage_home) },
+            { typeof(Pet_Form), nameof(tabPage_pets) },
+            { typeof(Visit_Form), nameof(tabPage_visits) },
+            { typeof(Owner_Form), nameof(tabPage_owners) },
+        };
+
+        public MaterialTabControl Material_Tab_Control_Menu => materialTabControl_menu;
 
         // Events
 
@@ -30,11 +38,6 @@ namespace Veterinary_CRUD_App.Views
         }
 
         // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        protected static void Set_Double_Buffered(Control control, bool value)
-        {
-            var prop = control.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
-            prop?.SetValue(control, value, null);
-        }
 
         // Events subscriptions ----------------------------------------------------------------------------------------------
 
@@ -43,14 +46,14 @@ namespace Veterinary_CRUD_App.Views
         protected virtual void Subscribe_Button_Clicks_To_Invoking_Calls()
         {
             materialTabControl_menu.SelectedIndexChanged += Selected_Index_Changed;
-            FormClosed += Main_View_FormClosed;
+            FormClosed += Main_View_Form_Closed;
         }
 
         // Unsubscribe buttons from events
         protected virtual void Unsubscribe_Button_Clicks_To_Invoking_Calls()
         {
             materialTabControl_menu.SelectedIndexChanged -= Selected_Index_Changed;
-            FormClosed -= Main_View_FormClosed;
+            FormClosed -= Main_View_Form_Closed;
         }
 
         private void Selected_Index_Changed(object? sender, EventArgs e)
@@ -84,7 +87,7 @@ namespace Veterinary_CRUD_App.Views
         }
 
         // Unsubscribe from events by overriding the Dispose function
-        private void Main_View_FormClosed(object? sender, FormClosedEventArgs e)
+        private void Main_View_Form_Closed(object? sender, FormClosedEventArgs e)
         {
             // Unsubscribe from events
             Unsubscribe_Button_Clicks_To_Invoking_Calls();
@@ -140,5 +143,7 @@ namespace Veterinary_CRUD_App.Views
         }
 
         // UI manipulation functions -----------------------------------------------------------------------------------------
+
+        // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     }
 }

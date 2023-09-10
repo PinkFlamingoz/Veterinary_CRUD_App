@@ -137,6 +137,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             Margin = new Padding(4, 2, 4, 2);
+            MinimumSize = new Size(1600, 900);
             Name = "Main_View";
             Padding = new Padding(3);
             Text = "Cat A Log";

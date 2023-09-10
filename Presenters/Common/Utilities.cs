@@ -166,7 +166,7 @@ namespace Veterinary_CRUD_App.Presenters.Common
         // This method resets properties of an object marked with a specific attribute.
         public static void Reset_Properties<T_Model>(T_Model obj)
         {
-            // Get all properties of the object that are marked with the ResettableAttribute.
+            // Get all properties of the object that are marked with the Resettable Attribute.
             var properties = typeof(T_Model).GetProperties().Where(p => Attribute.IsDefined(p, typeof(ResettableAttribute)));
 
             foreach (var property in properties)

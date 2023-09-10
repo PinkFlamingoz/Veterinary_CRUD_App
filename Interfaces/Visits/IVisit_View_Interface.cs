@@ -29,7 +29,7 @@ namespace Veterinary_CRUD_App.Interfaces.Visits
         [Resettable]
         string I_visit_description { get; set; }
 
-        // A ComboBox control property that is used to select or display the name of the pet associated with this visit.
+        // A Combo Box control property that is used to select or display the name of the pet associated with this visit.
         MaterialSkin.Controls.MaterialComboBox I_visit_pet_name_cb { get; set; }
     }
 }

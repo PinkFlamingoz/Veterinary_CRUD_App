@@ -26,7 +26,7 @@ namespace Veterinary_CRUD_App.Interfaces
         // Used to store or display a message, to provide feedback to the user.
         string I_message { get; set; }
 
-        // Get the main data grid view key
+        // Get the main Data Grid View key
         string I_Data_Grid_View_Key { get; set; }
 
         // EVENT DECLARATIONS:
@@ -60,7 +60,7 @@ namespace Veterinary_CRUD_App.Interfaces
 
         // FUNCTION DECLARATIONS:
 
-        // Hide specific columns in the given DataGridView.
+        // Hide specific columns in the given Data Grid View.
         // This is useful for hiding data columns that the user doesn't need to see.
         void Hide_Data_Grid_View_Columns(DataGridView target_data_grid_view, IEnumerable<string> column_names);
 
@@ -70,11 +70,11 @@ namespace Veterinary_CRUD_App.Interfaces
         // Display details of a selected record, aka show the second page tab.
         void Show_Details_Tab_Page(string title = "");
 
-        // Display the DataGridView, making it visible.
-        void Show_Data_Grid_View();
+        // Display the Data Grid View, making it visible.
+        void Show_Data_Grid_View_Details();
 
-        // Hide the DataGridView, making it invisible.
-        void Hide_Data_Grid_View();
+        // Hide the Data Grid View, making it invisible.
+        void Hide_Data_Grid_View_Details();
 
         //Display the user interface, making it visible.
         void Show();

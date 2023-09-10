@@ -52,7 +52,7 @@ namespace Veterinary_CRUD_App.Presenters
                     return combo_box_items;
                 }
             };
-            Register_ComboBox(pets_combo_box);
+            Register_Combo_Box(pets_combo_box);
 
             // Combo Box configurations ------------------------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ namespace Veterinary_CRUD_App.Presenters
             base.Open_Form(item_id, form_type, repository_type, presenter_type);
             if (item_id.HasValue)
             {
-                Load_Specific_Grid("pet_visits_grid_view");
+                Load_Specific_Data_Grid_View("pet_visits_grid_view");
             }
         }
 

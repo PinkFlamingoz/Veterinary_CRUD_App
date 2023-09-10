@@ -3,7 +3,7 @@ using Veterinary_CRUD_App.Base_Forms;
 using Veterinary_CRUD_App.Presenters.Common;
 using Veterinary_CRUD_App.Interfaces.Pets;
 using Veterinary_CRUD_App.Presenters;
-using System.Reflection;
+using MaterialSkin.Controls;
 
 namespace Veterinary_CRUD_App.Views
 {
@@ -84,7 +84,7 @@ namespace Veterinary_CRUD_App.Views
 
         protected override TabControl Main_Tab_Control => tabControl_visits_form;
         protected override Button Search_Button => button_visit_search;
-        protected override MaterialSkin.Controls.MaterialTextBox2 Search_Text_Box => textBox_visit_search;
+        protected override MaterialTextBox2 Search_Text_Box => textBox_visit_search;
         protected override Button Add_new_button => button_visit_add_new_visit;
         protected override Button Save_button => button_visit_save;
         protected override Button Delete_button => button_visit_delete;
@@ -92,9 +92,11 @@ namespace Veterinary_CRUD_App.Views
         protected override Button Edit_Button => button_visit_edit;
         protected override TabPage List_tab_page => tabPage_visit_list;
         protected override TabPage Details_tab_page => tabPage_visit_details;
-        protected override DataGridView DataGridView_Main => dataGridView_visits_pets;
+        protected override DataGridView Data_Grid_View_Main => dataGridView_visits_pets;
         protected override DateTimePicker Date_Time_Picker => dateTimePicker_visit_date;
-        protected override MaterialSkin.Controls.MaterialLabel Label_Date_Time_Picker_Mask => materialLabel_visit_date_datetime_mask;
+        protected override MaterialLabel Label_Date_Time_Picker_Mask => materialLabel_visit_date_datetime_mask;
+        protected override MaterialTextBox2 ID_Text_Box_Mask => materialTextBox21_visit_id_mask;
+        protected override NumericUpDown Numeric_Up_Down_ID_Of_Item => numericUpDown_visit_id;
 
         // Constructor
         public Visit_Form()
@@ -139,5 +141,7 @@ namespace Veterinary_CRUD_App.Views
         }
 
         // Event functions ---------------------------------------------------------------------------------------------------
+
+        // Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     }
 }

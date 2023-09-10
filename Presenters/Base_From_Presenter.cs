@@ -15,7 +15,7 @@ namespace Veterinary_CRUD_App.Presenters
         protected readonly T_Repository_Interface repository_interface;
         private IEnumerable<T_Model>? item_list;
 
-        // Used for setting the initial binding source key on initialization and then getting the current selected one
+        // Used for setting the initial Binding Source key on initialization and then getting the current selected one
         protected string Current_binding_source_key { get; set; } = string.Empty;
 
         // Constructor
@@ -31,7 +31,7 @@ namespace Veterinary_CRUD_App.Presenters
         protected void Initialize_Form_Presenter()
         {
             Subscribe_Events_To_Functions();
-            Load_Specific_Grid(Current_binding_source_key);
+            Load_Specific_Data_Grid_View(Current_binding_source_key);
         }
 
         // Events subscriptions ----------------------------------------------------------------------------------------------
@@ -49,6 +49,7 @@ namespace Veterinary_CRUD_App.Presenters
             view_interface.Open_Form_Event += Open_Form;
             view_interface.Delete_Item_From_Another_Form_Event += Delete_Item_From_Another_Form;
             view_interface.Validate_Combo_Box_Selection_Event += Is_Valid_Selection_Combo_Box;
+
             if (view_interface is Form form_view)
             {
                 form_view.FormClosed += On_Form_Closed;
@@ -69,7 +70,7 @@ namespace Veterinary_CRUD_App.Presenters
             view_interface.Delete_Item_From_Another_Form_Event -= Delete_Item_From_Another_Form;
             view_interface.Validate_Combo_Box_Selection_Event -= Is_Valid_Selection_Combo_Box;
 
-            foreach (var grid_view in Shared_State.Subscribed_Grid_Views)
+            foreach (var grid_view in Shared_State.Subscribed_Data_Grid_Views)
             {
                 Unsubscribe_From_Data_Binding_Complete(grid_view);
                 Unsubscribe_From_Grid_View_Selection_Changed(grid_view);
@@ -94,9 +95,9 @@ namespace Veterinary_CRUD_App.Presenters
 
         // Helper functions --------------------------------------------------------------------------------------------------
 
-        // Get a binding source
-        // Get_Binding_Source: This method tries to get a BindingSource object by a given key from a dictionary.
-        // If the key is found, it returns the corresponding BindingSource.
+        // Get a Binding Source
+        // Get_Binding_Source: This method tries to get a Binding Source object by a given key from a dictionary.
+        // If the key is found, it returns the corresponding Binding Source.
         // If not, it throws an exception.
         private static BindingSource Get_Binding_Source(string key)
         {
@@ -114,7 +115,7 @@ namespace Veterinary_CRUD_App.Presenters
             Utilities.Assign_Properties(item, view_interface);
         }
 
-        // Clear the view aka reset the properties on the page details tab and reset the binding source key to the main data grid view
+        // Clear the view aka reset the properties on the page details tab and reset the Binding Source key to the main Data Grid View
         private void Clear_View()
         {
             Current_binding_source_key = view_interface.I_Data_Grid_View_Key;
@@ -128,7 +129,7 @@ namespace Veterinary_CRUD_App.Presenters
         // Shared helper functions --------------------------------
 
         // Get the current selected item from the Data Grid View
-        // Get_Current_Selected_Item_From_Data_Grid_View: Returns the currently selected item from a DataGridView bound to a specific BindingSource.
+        // Get_Current_Selected_Item_From_Data_Grid_View: Returns the currently selected item from a Data Grid View bound to a specific Binding Source.
         // If no valid item is selected or the selected item is not of the expected type T_Model, a warning is shown to the user and the item_selected flag is set to false.
         protected T_Model Get_Current_Selected_Item_From_Data_Grid_View(out bool item_selected)
         {
@@ -152,9 +153,9 @@ namespace Veterinary_CRUD_App.Presenters
 
         // Shared helper functions --------------------------------
 
-        // Search a specific item then load it on the data grid view
+        // Search a specific item then load it on the Data Grid View
         // Search_Item: Based on the search value provided in the view interface, this method either searches for items matching the value or fetches all items.
-        // The results are then bound to the DataGridView.
+        // The results are then bound to the Data Grid View.
         private void Search_Item(object? sender, EventArgs args)
         {
             bool empty = string.IsNullOrWhiteSpace(view_interface.I_search_value);
@@ -173,18 +174,17 @@ namespace Veterinary_CRUD_App.Presenters
         // Add a new item shares the functionality with the edit item, so here we just set that the item is not being edited but in theory we are adding a new item
         // Add_New_Item & Edit_Item: Both methods deal with the user's intention to add or edit an item.
         // The main difference is the state they set in the view interface (I_is_edit).
-        // Add_New_Item hides the DataGridView for item addition, while Edit_Item loads the selected item into the view and sets it up for editing.
+        // Add_New_Item hides the Data Grid View for item addition, while Edit_Item loads the selected item into the view and sets it up for editing.
         private void Add_New_Item(object? sender, EventArgs args)
         {
             view_interface.I_is_edit = false;
-            view_interface.Hide_Data_Grid_View();
         }
 
         // Edit a new item shares the functionality with the add item, so here we just set that the item is being edited but in theory we are editing a new item
         // # OVERRIDEN IN THE DERIVED CLASSES
         // Add_New_Item & Edit_Item: Both methods deal with the user's intention to add or edit an item.
         // The main difference is the state they set in the view interface (I_is_edit).
-        // Add_New_Item hides the DataGridView for item addition, while Edit_Item loads the selected item into the view and sets it up for editing.
+        // Add_New_Item hides the Data Grid View for item addition, while Edit_Item loads the selected item into the view and sets it up for editing.
         protected virtual void Edit_Item(object? sender, Cancelable_Event_Args args)
         {
             Shared_State.Current_item_id = null;
@@ -194,7 +194,6 @@ namespace Veterinary_CRUD_App.Presenters
             {
                 Load_Item_To_View(item);
                 view_interface.I_is_edit = true;
-                view_interface.Show_Data_Grid_View();
             }
             else
             {
@@ -243,8 +242,8 @@ namespace Veterinary_CRUD_App.Presenters
         private void Handle_Delete_Success()
         {
             view_interface.I_message = Messages.Delete_success;
-            Load_All_DataGridViews();
-            Load_All_ComboBoxes();
+            Load_All_Data_Grid_Views();
+            Load_All_Combo_Boxes();
         }
 
         // Handle the delete failure set the cancel event to true so we don't go through with the even
@@ -290,7 +289,7 @@ namespace Veterinary_CRUD_App.Presenters
         // It fetches the item details from the view.
         // Validates the item.
         // If the item is valid, it either adds or edits the item in the repository.
-        // After saving, it refreshes the views, loads the data grids and combo boxes, and clears the form.
+        // After saving, it refreshes the views, loads the data grids and Combo Boxes, and clears the form.
 
         // Helper functions for saving an item ------------------
 
@@ -341,8 +340,8 @@ namespace Veterinary_CRUD_App.Presenters
             if (Validate_Item(item))
             {
                 Save_Item_Model(item);
-                Load_All_DataGridViews();
-                Load_All_ComboBoxes();
+                Load_All_Data_Grid_Views();
+                Load_All_Combo_Boxes();
                 Clear_View();
             }
             else
@@ -360,9 +359,9 @@ namespace Veterinary_CRUD_App.Presenters
         }
 
         // Delete an item from another form ----------------------------------
-        //  Delete_Item_From_Another_Form: Allows the deletion of an item from a different form.
-        //  It first confirms the deletion with the user, then tries to delete the item using reflection (through the given repository type and method).
-        //  On success, it refreshes the views; on failure, it displays an error message.
+        // Delete_Item_From_Another_Form: Allows the deletion of an item from a different form.
+        // It first confirms the deletion with the user, then tries to delete the item using reflection (through the given repository type and method).
+        // On success, it refreshes the views; on failure, it displays an error message.
 
         // Helper functions for deleting an item ------------------
 
@@ -409,8 +408,8 @@ namespace Veterinary_CRUD_App.Presenters
 
             if (Try_Delete_Item(repository, args.Id, delete_method))
             {
-                Load_All_DataGridViews();
-                Load_All_ComboBoxes();
+                Load_All_Data_Grid_Views();
+                Load_All_Combo_Boxes();
                 MessageBox.Show(Messages.Delete_success, Messages.Delete_success, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -450,6 +449,7 @@ namespace Veterinary_CRUD_App.Presenters
             }
 
             Event_Aggregator.Instance.Raise_Request_Open_Form(args);
+            Clear_View();
         }
 
         // Open a form from another form -------------------------------------
@@ -458,9 +458,9 @@ namespace Veterinary_CRUD_App.Presenters
 
         // Data grid view set up  --------------------------------------------------------------------------------------------
 
-        // Add a binding source
-        // Adds or updates a binding source in a dictionary.
-        // If the key exists and force_update is true, it updates the existing binding source.
+        // Add a Binding Source
+        // Adds or updates a Binding Source in a dictionary.
+        // If the key exists and force_update is true, it updates the existing Binding Source.
         private static void Add_Binding_Source(string key, BindingSource binding_source, bool force_update = false)
         {
             if (Shared_State.Data_Grid_View_Binding_sources.ContainsKey(key))
@@ -474,10 +474,10 @@ namespace Veterinary_CRUD_App.Presenters
             Shared_State.Data_Grid_View_Binding_sources.Add(key, binding_source);
         }
 
-        // Register the data grid view
-        // Initializes and sets the meta-information (Data_Grid_View_Tag) for a DataGridView.
-        // Associates a DataGridView with a specific binding source key and sets up an event listener for selection changes.
-        private void Register_DataGridView(DataGridView grid_view, string binding_source_key)
+        // Register the Data Grid View
+        // Initializes and sets the meta-information (Data_Grid_View_Tag) for a Data Grid View.
+        // Associates a Data Grid View with a specific Binding Source key and sets up an event listener for selection changes.
+        private void Register_Data_Grid_View(DataGridView grid_view, string binding_source_key)
         {
             var tag = new Data_Grid_View_Tag
             {
@@ -488,8 +488,8 @@ namespace Veterinary_CRUD_App.Presenters
         }
 
         // On Grid View Selection Changed
-        // Event handler for DataGridView's selection changed event.
-        // It captures the binding source key from the DataGridView's meta-information (Tag) when the selection changes.
+        // Event handler for Data Grid View's selection changed event.
+        // It captures the Binding Source key from the Data Grid View's meta-information (Tag) when the selection changes.
         private void On_Grid_View_Selection_Changed(object? sender, EventArgs args)
         {
             if (sender is DataGridView grid_view && grid_view.Tag is Data_Grid_View_Tag tag && tag.Binding_Source_Key != null)
@@ -499,7 +499,7 @@ namespace Veterinary_CRUD_App.Presenters
         }
 
         // Unsubscribe From Grid View Selection Changed
-        // Removes the event listener for the DataGridView's selection changed event.
+        // Removes the event listener for the Data Grid View's selection changed event.
         protected void Unsubscribe_From_Grid_View_Selection_Changed(DataGridView grid_view)
         {
             grid_view.SelectionChanged -= On_Grid_View_Selection_Changed;
@@ -521,16 +521,16 @@ namespace Veterinary_CRUD_App.Presenters
             Shared_State.Data_Grid_View_Load_functions.Add(key, load_function);
         }
 
-        // Set the binding list of the data grid view
-        // Associates a BindingSource with a DataGridView.
-        // This determines what data will be shown in the DataGridView.
+        // Set the binding list of the Data Grid View
+        // Associates a Binding Source with a Data Grid View.
+        // This determines what data will be shown in the Data Grid View.
         private static void Set_List_Binding_Source(DataGridView grid_view, BindingSource binding_source)
         {
             grid_view.DataSource = binding_source;
         }
 
         // On Data Bind Complete
-        // Event handler for DataGridView's data binding complete event.
+        // Event handler for Data Grid View's data binding complete event.
         // Uses the meta-information (Data_Grid_View_Tag) to apply specific configuration settings, such as hiding certain columns.
         private void On_Data_Bind_Complete(object? sender, DataGridViewBindingCompleteEventArgs args)
         {
@@ -545,21 +545,21 @@ namespace Veterinary_CRUD_App.Presenters
         }
 
         // Unsubscribe From Data Binding Complete
-        // Removes the event listener for the DataGridView's data binding complete event.
+        // Removes the event listener for the Data Grid View's data binding complete event.
         protected void Unsubscribe_From_Data_Binding_Complete(DataGridView config)
         {
             config.DataBindingComplete -= On_Data_Bind_Complete;
         }
 
-        // Main method for to register data grid view # CALLED IN THE DERIVED CLASS
-        // The main function for setting up a DataGridView.
-        // Adds a BindingSource, sets up the DataGridView's meta-information (Data_Grid_View_Tag), registers a load function, and associates the BindingSource with the DataGridView.
+        // Main method for to register Data Grid View # CALLED IN THE DERIVED CLASS
+        // The main function for setting up a Data Grid View.
+        // Adds a Binding Source, sets up the Data Grid View's meta-information (Data_Grid_View_Tag), registers a load function, and associates the BindingSource with the Data Grid View.
         // It also adds a listener for the data binding complete event.
         // Add the grid to a list so we can keep track of it later for unsubscribing.
         protected void Register_Grid_View(Data_Grid_View_Configuration config)
         {
             Add_Binding_Source(config.Key, new BindingSource());
-            Register_DataGridView(config.Data_Grid_View_Control, config.Key);
+            Register_Data_Grid_View(config.Data_Grid_View_Control, config.Key);
             Register_Load_Function(config.Key, config.Load_Function);
             Set_List_Binding_Source(config.Data_Grid_View_Control, Get_Binding_Source(config.Key));
 
@@ -569,34 +569,34 @@ namespace Veterinary_CRUD_App.Presenters
                 config.Data_Grid_View_Control.DataBindingComplete += On_Data_Bind_Complete;
             }
 
-            Shared_State.Subscribed_Grid_Views.Add(config.Data_Grid_View_Control);
+            Shared_State.Subscribed_Data_Grid_Views.Add(config.Data_Grid_View_Control);
         }
 
-        // Load a specific data grid view on the details tab page # CALLED IN THE DERIVED CLASSES
-        // Fetches and loads data into a specific DataGridView using its configuration key.
-        protected static void Load_Specific_Grid(string configuration_key)
+        // Load a specific Data Grid View on the details Tab Page # CALLED IN THE DERIVED CLASSES
+        // Fetches and loads data into a specific Data Grid View using its configuration key.
+        protected static void Load_Specific_Data_Grid_View(string configuration_key)
         {
             var data = Shared_State.Data_Grid_View_Load_functions[configuration_key]();
             Get_Binding_Source(configuration_key).DataSource = data;
         }
 
-        // Load the data on to the data grid views
-        // Iteratively fetches and loads data into all registered DataGridViews.
-        protected static void Load_All_DataGridViews()
+        // Load the data on to the Data Grid Views
+        // Iteratively fetches and loads data into all registered Data Grid Views.
+        protected static void Load_All_Data_Grid_Views()
         {
             foreach (var key in Shared_State.Data_Grid_View_Binding_sources.Keys)
             {
-                Load_Specific_Grid(key);
+                Load_Specific_Data_Grid_View(key);
             }
         }
 
         // Data grid view set up  --------------------------------------------------------------------------------------------
 
         // Combo Box set up  -------------------------------------------------------------------------------------------------
-        // Is_Valid_Selection_Combo_Box: Checks if a valid item is selected in a ComboBox. Shows a warning if not valid.
-        // Register_ComboBox: Registers a ComboBox configuration in a dictionary and loads data into it.
-        // Load_ComboBox: Loads data into a specific ComboBox based on its configuration key.
-        // Load_All_ComboBoxes: Iteratively loads data into all ComboBoxes in the dictionary.
+        // Is_Valid_Selection_Combo_Box: Checks if a valid item is selected in a Combo Box. Shows a warning if not valid.
+        // Register_Combo_Box: Registers a Combo Box configuration in a dictionary and loads data into it.
+        // Load_Combo_Box: Loads data into a specific Combo Box based on its configuration key.
+        // Load_All_Combo_Boxes: Iteratively loads data into all Combo Boxes in the dictionary.
 
         // Is an item of the Combo Box selected # CALLED IN THE VIEW OF THE DERIVED CLASS
         protected static bool Is_Valid_Selection_Combo_Box(ComboBox combo_box)
@@ -610,15 +610,15 @@ namespace Veterinary_CRUD_App.Presenters
             return false;
         }
 
-        // Register the ComboBox # CALLED IN THE DERIVED CLASS
-        protected static void Register_ComboBox(Combo_Box_Configuration config)
+        // Register the Combo Box # CALLED IN THE DERIVED CLASS
+        protected static void Register_Combo_Box(Combo_Box_Configuration config)
         {
             Shared_State.Combo_Box_Configurations[config.Key] = config;
-            Load_ComboBox(config.Key);
+            Load_Combo_Box(config.Key);
         }
 
-        // Load data into the ComboBox
-        private static void Load_ComboBox(string key)
+        // Load data into the Combo Box
+        private static void Load_Combo_Box(string key)
         {
             if (!Shared_State.Combo_Box_Configurations.ContainsKey(key))
             {
@@ -637,12 +637,12 @@ namespace Veterinary_CRUD_App.Presenters
             config.Combo_Box_Control.SelectedIndex = 0;
         }
 
-        // Load data to the combo boxes
-        protected static void Load_All_ComboBoxes()
+        // Load data to the Combo Boxes
+        protected static void Load_All_Combo_Boxes()
         {
             foreach (var key in Shared_State.Combo_Box_Configurations.Keys)
             {
-                Load_ComboBox(key);
+                Load_Combo_Box(key);
             }
         }
 
@@ -659,15 +659,15 @@ namespace Veterinary_CRUD_App.Presenters
                 if (item != null)
                 {
                     view_interface.Show_Details_Tab_Page(Messages.Edit_text);
+                    view_interface.Show_Data_Grid_View_Details();
                     Load_Item_To_View(item);
-                    view_interface.Show_Data_Grid_View();
                     return; // Exit if the item is found
                 }
             }
-            view_interface.Show_Details_Tab_Page(Messages.Add_new_text);
-            view_interface.Hide_Data_Grid_View();
 
             Clear_View();
+            view_interface.Show_Details_Tab_Page(Messages.Add_new_text);
+            view_interface.Hide_Data_Grid_View_Details();
         }
 
         // Called in the main view presenter ---------------------------------------------------------------------------------

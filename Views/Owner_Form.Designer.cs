@@ -41,7 +41,7 @@
             panel_container_data = new Panel();
             dataGridView_owner_pets = new DataGridView();
             panel_container = new Panel();
-            materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
+            materialTextBox21_owner_id_mask = new MaterialSkin.Controls.MaterialTextBox2();
             panel_buttons_container = new Panel();
             button_owner_save = new MaterialSkin.Controls.MaterialButton();
             button_owner_delete_pet = new MaterialSkin.Controls.MaterialButton();
@@ -49,7 +49,6 @@
             button_owner_cancel = new MaterialSkin.Controls.MaterialButton();
             button_owner_edit_pet = new MaterialSkin.Controls.MaterialButton();
             numericUpDown_owner_id = new NumericUpDown();
-            materialLabel_owner_id = new MaterialSkin.Controls.MaterialLabel();
             textBox_owner_name = new MaterialSkin.Controls.MaterialTextBox2();
             materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
             textBox_owner_phone = new MaterialSkin.Controls.MaterialTextBox2();
@@ -273,10 +272,9 @@
             // 
             // panel_container
             // 
-            panel_container.Controls.Add(materialDivider4);
+            panel_container.Controls.Add(materialTextBox21_owner_id_mask);
             panel_container.Controls.Add(panel_buttons_container);
             panel_container.Controls.Add(numericUpDown_owner_id);
-            panel_container.Controls.Add(materialLabel_owner_id);
             panel_container.Controls.Add(textBox_owner_name);
             panel_container.Controls.Add(materialDivider3);
             panel_container.Controls.Add(textBox_owner_phone);
@@ -289,17 +287,35 @@
             panel_container.Size = new Size(652, 860);
             panel_container.TabIndex = 33;
             // 
-            // materialDivider4
+            // materialTextBox21_owner_id_mask
             // 
-            materialDivider4.Anchor = AnchorStyles.None;
-            materialDivider4.BackColor = Color.FromArgb(30, 0, 0, 0);
-            materialDivider4.Depth = 0;
-            materialDivider4.Location = new Point(48, 75);
-            materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
-            materialDivider4.Name = "materialDivider4";
-            materialDivider4.Size = new Size(133, 3);
-            materialDivider4.TabIndex = 29;
-            materialDivider4.Text = "materialDivider4";
+            materialTextBox21_owner_id_mask.Anchor = AnchorStyles.None;
+            materialTextBox21_owner_id_mask.AnimateReadOnly = true;
+            materialTextBox21_owner_id_mask.BackgroundImageLayout = ImageLayout.None;
+            materialTextBox21_owner_id_mask.CharacterCasing = CharacterCasing.Normal;
+            materialTextBox21_owner_id_mask.Depth = 0;
+            materialTextBox21_owner_id_mask.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialTextBox21_owner_id_mask.HideSelection = true;
+            materialTextBox21_owner_id_mask.LeadingIcon = Properties.Resources.icons8_person_90;
+            materialTextBox21_owner_id_mask.Location = new Point(48, 48);
+            materialTextBox21_owner_id_mask.MaxLength = 32767;
+            materialTextBox21_owner_id_mask.MouseState = MaterialSkin.MouseState.OUT;
+            materialTextBox21_owner_id_mask.Name = "materialTextBox21_owner_id_mask";
+            materialTextBox21_owner_id_mask.PasswordChar = '\0';
+            materialTextBox21_owner_id_mask.PrefixSuffix = MaterialSkin.Controls.MaterialTextBox2.PrefixSuffixTypes.Prefix;
+            materialTextBox21_owner_id_mask.PrefixSuffixText = "Owner ID";
+            materialTextBox21_owner_id_mask.ReadOnly = true;
+            materialTextBox21_owner_id_mask.RightToLeft = RightToLeft.No;
+            materialTextBox21_owner_id_mask.SelectedText = "";
+            materialTextBox21_owner_id_mask.SelectionLength = 0;
+            materialTextBox21_owner_id_mask.SelectionStart = 0;
+            materialTextBox21_owner_id_mask.ShortcutsEnabled = true;
+            materialTextBox21_owner_id_mask.Size = new Size(204, 48);
+            materialTextBox21_owner_id_mask.TabIndex = 37;
+            materialTextBox21_owner_id_mask.TabStop = false;
+            materialTextBox21_owner_id_mask.TextAlign = HorizontalAlignment.Left;
+            materialTextBox21_owner_id_mask.TrailingIcon = null;
+            materialTextBox21_owner_id_mask.UseSystemPasswordChar = false;
             // 
             // panel_buttons_container
             // 
@@ -427,25 +443,11 @@
             numericUpDown_owner_id.Enabled = false;
             numericUpDown_owner_id.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             numericUpDown_owner_id.ImeMode = ImeMode.NoControl;
-            numericUpDown_owner_id.Location = new Point(48, 93);
+            numericUpDown_owner_id.Location = new Point(48, 48);
             numericUpDown_owner_id.Name = "numericUpDown_owner_id";
             numericUpDown_owner_id.ReadOnly = true;
             numericUpDown_owner_id.Size = new Size(164, 32);
             numericUpDown_owner_id.TabIndex = 24;
-            // 
-            // materialLabel_owner_id
-            // 
-            materialLabel_owner_id.Anchor = AnchorStyles.None;
-            materialLabel_owner_id.AutoSize = true;
-            materialLabel_owner_id.Depth = 0;
-            materialLabel_owner_id.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel_owner_id.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel_owner_id.Location = new Point(48, 48);
-            materialLabel_owner_id.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel_owner_id.Name = "materialLabel_owner_id";
-            materialLabel_owner_id.Size = new Size(83, 24);
-            materialLabel_owner_id.TabIndex = 28;
-            materialLabel_owner_id.Text = "Owner ID";
             // 
             // textBox_owner_name
             // 
@@ -458,7 +460,7 @@
             textBox_owner_name.HelperText = "                      Enter Owner Name";
             textBox_owner_name.HideSelection = true;
             textBox_owner_name.LeadingIcon = Properties.Resources.icons8_person_90;
-            textBox_owner_name.Location = new Point(48, 218);
+            textBox_owner_name.Location = new Point(48, 187);
             textBox_owner_name.MaxLength = 32767;
             textBox_owner_name.MouseState = MaterialSkin.MouseState.OUT;
             textBox_owner_name.Name = "textBox_owner_name";
@@ -484,7 +486,7 @@
             materialDivider3.Anchor = AnchorStyles.None;
             materialDivider3.BackColor = Color.FromArgb(30, 0, 0, 0);
             materialDivider3.Depth = 0;
-            materialDivider3.Location = new Point(110, 171);
+            materialDivider3.Location = new Point(113, 141);
             materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
             materialDivider3.Name = "materialDivider3";
             materialDivider3.Size = new Size(420, 3);
@@ -502,7 +504,7 @@
             textBox_owner_phone.HelperText = "                      Enter Owner Phone";
             textBox_owner_phone.HideSelection = true;
             textBox_owner_phone.LeadingIcon = Properties.Resources.icons8_person_90;
-            textBox_owner_phone.Location = new Point(49, 306);
+            textBox_owner_phone.Location = new Point(49, 275);
             textBox_owner_phone.MaxLength = 32767;
             textBox_owner_phone.MouseState = MaterialSkin.MouseState.OUT;
             textBox_owner_phone.Name = "textBox_owner_phone";
@@ -534,7 +536,7 @@
             textBox_owner_email.HelperText = "                      Enter Owner Email";
             textBox_owner_email.HideSelection = true;
             textBox_owner_email.LeadingIcon = Properties.Resources.icons8_person_90;
-            textBox_owner_email.Location = new Point(49, 395);
+            textBox_owner_email.Location = new Point(49, 364);
             textBox_owner_email.MaxLength = 32767;
             textBox_owner_email.MouseState = MaterialSkin.MouseState.OUT;
             textBox_owner_email.Name = "textBox_owner_email";
@@ -592,8 +594,6 @@
         private MaterialSkin.Controls.MaterialButton button_owner_add_new_pet;
         private MaterialSkin.Controls.MaterialButton button_owner_cancel;
         private MaterialSkin.Controls.MaterialButton button_owner_edit_pet;
-        private MaterialSkin.Controls.MaterialDivider materialDivider4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel_owner_id;
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
         private MaterialSkin.Controls.MaterialTextBox2 textBox_owner_phone;
         private MaterialSkin.Controls.MaterialTextBox2 textBox_owner_name;
@@ -607,5 +607,6 @@
         private DataGridView dataGridView_owners;
         private DataGridView dataGridView_owner_pets;
         private Panel panel_container_main_buttons;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21_owner_id_mask;
     }
 }

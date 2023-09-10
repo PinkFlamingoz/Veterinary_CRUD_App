@@ -3,11 +3,11 @@ using System.Text;
 
 namespace Veterinary_CRUD_App.Presenters.Common
 {
-    // Utility class responsible for validating data against DataAnnotations.
+    // Utility class responsible for validating data against Data Annotations.
     public class Data_Validation
     {
-        // Validates the provided data model against its DataAnnotations.
-        // If the data is invalid, it throws a ValidationException with the list of error messages.
+        // Validates the provided data model against its Data Annotations.
+        // If the data is invalid, it throws a Validation Exception with the list of error messages.
         public static void Validate_Data(object model)
         {
             // List to store validation results.

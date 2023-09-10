@@ -29,7 +29,7 @@ namespace Veterinary_CRUD_App.Presenters
             var pets_of_owner_grid_view = new Data_Grid_View_Configuration
             {
                 Key = "pets_of_owner_grid_view",
-                Data_Grid_View_Control = view.I_details_data_grid_view ?? throw new InvalidOperationException("Details data grid view is not initialized."),
+                Data_Grid_View_Control = view.I_details_data_grid_view ?? throw new InvalidOperationException("Details Data Grid View is not initialized."),
                 Load_Function = () =>
                 {
                     if (Shared_State.Current_item_id.HasValue)
@@ -68,7 +68,7 @@ namespace Veterinary_CRUD_App.Presenters
         {
             base.Edit_Item(sender, e);
             if (e.Cancel) return;
-            Load_Specific_Grid("pets_of_owner_grid_view");
+            Load_Specific_Data_Grid_View("pets_of_owner_grid_view");
         }
 
         // Override the Open Form function from the base form presenter
@@ -78,7 +78,7 @@ namespace Veterinary_CRUD_App.Presenters
 
             if (item_id.HasValue)
             {
-                Load_Specific_Grid("pet_visits_grid_view");
+                Load_Specific_Data_Grid_View("pet_visits_grid_view");
             }
         }
 

@@ -30,6 +30,7 @@
         {
             panel_application_name_container = new Panel();
             materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            materialLabel_link_lable = new MaterialSkin.Controls.MaterialLabel();
             pictureBox_application_logo = new PictureBox();
             label_application_name = new MaterialSkin.Controls.MaterialLabel();
             label_heart = new MaterialSkin.Controls.MaterialLabel();
@@ -50,7 +51,6 @@
             materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             materialLabel_settings = new MaterialSkin.Controls.MaterialLabel();
             materialSwitch_theme = new MaterialSkin.Controls.MaterialSwitch();
-            materialLabel_link_lable = new MaterialSkin.Controls.MaterialLabel();
             panel_application_name_container.SuspendLayout();
             materialCard2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_application_logo).BeginInit();
@@ -84,6 +84,22 @@
             materialCard2.Padding = new Padding(14);
             materialCard2.Size = new Size(448, 100);
             materialCard2.TabIndex = 32;
+            // 
+            // materialLabel_link_lable
+            // 
+            materialLabel_link_lable.AutoSize = true;
+            materialLabel_link_lable.Cursor = Cursors.Hand;
+            materialLabel_link_lable.Depth = 0;
+            materialLabel_link_lable.Font = new Font("Roboto", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel_link_lable.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            materialLabel_link_lable.HighEmphasis = true;
+            materialLabel_link_lable.Location = new Point(174, 69);
+            materialLabel_link_lable.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel_link_lable.Name = "materialLabel_link_lable";
+            materialLabel_link_lable.Size = new Size(164, 17);
+            materialLabel_link_lable.TabIndex = 32;
+            materialLabel_link_lable.Text = "Made by Hristijan Stavrov";
+            materialLabel_link_lable.UseAccent = true;
             // 
             // pictureBox_application_logo
             // 
@@ -209,7 +225,7 @@
             materialRadioButton_color_yellow.TabStop = true;
             materialRadioButton_color_yellow.Text = "Yellow";
             materialRadioButton_color_yellow.UseVisualStyleBackColor = true;
-            materialRadioButton_color_yellow.CheckedChanged += MaterialRadioButton_Color_Yellow_CheckedChanged;
+            materialRadioButton_color_yellow.CheckedChanged += Material_Radio_Button_Color_Yellow_Checked_Changed;
             // 
             // materialRadioButton_color_pink
             // 
@@ -226,7 +242,7 @@
             materialRadioButton_color_pink.TabStop = true;
             materialRadioButton_color_pink.Text = "Pink";
             materialRadioButton_color_pink.UseVisualStyleBackColor = true;
-            materialRadioButton_color_pink.CheckedChanged += MaterialRadioButton_Color_Pink_CheckedChanged;
+            materialRadioButton_color_pink.CheckedChanged += Material_Radio_Button_Color_Pink_Checked_Changed;
             // 
             // materialRadioButton_color_red
             // 
@@ -243,7 +259,7 @@
             materialRadioButton_color_red.TabStop = true;
             materialRadioButton_color_red.Text = "Red";
             materialRadioButton_color_red.UseVisualStyleBackColor = true;
-            materialRadioButton_color_red.CheckedChanged += MaterialRadioButton_Color_Red_CheckedChanged;
+            materialRadioButton_color_red.CheckedChanged += Material_Radio_Button_Color_Red_Checked_Changed;
             // 
             // materialRadioButton_color_amber
             // 
@@ -260,11 +276,12 @@
             materialRadioButton_color_amber.TabStop = true;
             materialRadioButton_color_amber.Text = "Amber";
             materialRadioButton_color_amber.UseVisualStyleBackColor = true;
-            materialRadioButton_color_amber.CheckedChanged += MaterialRadioButton_Color_Amber_CheckedChanged;
+            materialRadioButton_color_amber.CheckedChanged += Material_Radio_Button_Color_Amber_Checked_Changed;
             // 
             // materialRadioButton_color_blue
             // 
             materialRadioButton_color_blue.AutoSize = true;
+            materialRadioButton_color_blue.Checked = true;
             materialRadioButton_color_blue.Depth = 0;
             materialRadioButton_color_blue.Location = new Point(312, 145);
             materialRadioButton_color_blue.Margin = new Padding(0);
@@ -277,7 +294,7 @@
             materialRadioButton_color_blue.TabStop = true;
             materialRadioButton_color_blue.Text = "Blue";
             materialRadioButton_color_blue.UseVisualStyleBackColor = true;
-            materialRadioButton_color_blue.CheckedChanged += MaterialRadioButton_Color_Blue_CheckedChanged;
+            materialRadioButton_color_blue.CheckedChanged += Material_Radio_Button_Color_Blue_Checked_Changed;
             // 
             // materialRadioButton_color_green
             // 
@@ -294,7 +311,7 @@
             materialRadioButton_color_green.TabStop = true;
             materialRadioButton_color_green.Text = "Green";
             materialRadioButton_color_green.UseVisualStyleBackColor = true;
-            materialRadioButton_color_green.CheckedChanged += MaterialRadioButton_Color_Green_CheckedChanged;
+            materialRadioButton_color_green.CheckedChanged += Material_Radio_Button_Color_Green_Checked_Changed;
             // 
             // materialLabel_color_settings
             // 
@@ -371,23 +388,7 @@
             materialSwitch_theme.TabIndex = 30;
             materialSwitch_theme.Text = "Light / Dark";
             materialSwitch_theme.UseVisualStyleBackColor = true;
-            materialSwitch_theme.CheckedChanged += MaterialSwitch_Theme_CheckedChanged;
-            // 
-            // materialLabel_link_lable
-            // 
-            materialLabel_link_lable.AutoSize = true;
-            materialLabel_link_lable.Cursor = Cursors.Hand;
-            materialLabel_link_lable.Depth = 0;
-            materialLabel_link_lable.Font = new Font("Roboto", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel_link_lable.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
-            materialLabel_link_lable.HighEmphasis = true;
-            materialLabel_link_lable.Location = new Point(174, 69);
-            materialLabel_link_lable.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel_link_lable.Name = "materialLabel_link_lable";
-            materialLabel_link_lable.Size = new Size(164, 17);
-            materialLabel_link_lable.TabIndex = 32;
-            materialLabel_link_lable.Text = "Made by Hristijan Stavrov";
-            materialLabel_link_lable.UseAccent = true;
+            materialSwitch_theme.CheckedChanged += Material_Switch_Theme_Checked_Changed;
             // 
             // Homepage
             // 

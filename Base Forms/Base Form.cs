@@ -1,7 +1,5 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
-using System.Reflection;
-using System.Windows.Forms;
 using Veterinary_CRUD_App.Interfaces;
 using Veterinary_CRUD_App.Presenters.Common;
 
@@ -21,14 +19,14 @@ namespace Veterinary_CRUD_App.Base_Forms
 
         public DataGridView I_main_data_grid_view
         {
-            get => DataGridView_Main;
-            set => DataGridView_Main = value;
+            get => Data_Grid_View_Main;
+            set => Data_Grid_View_Main = value;
         }
 
         public DataGridView? I_details_data_grid_view
         {
-            get => DataGridView_Details ?? null;
-            set => DataGridView_Details = value;
+            get => Data_Grid_View_Details ?? null;
+            set => Data_Grid_View_Details = value;
         }
 
         protected string Data_Grid_View_Key = string.Empty;
@@ -43,8 +41,7 @@ namespace Veterinary_CRUD_App.Base_Forms
 
         protected abstract TabControl Main_Tab_Control { get; }
         protected abstract Button Search_Button { get; }
-        protected abstract MaterialSkin.Controls.MaterialTextBox2 Search_Text_Box { get; }
-        protected abstract MaterialSkin.Controls.MaterialLabel? Label_Date_Time_Picker_Mask { get; }
+        protected abstract MaterialTextBox2 Search_Text_Box { get; }
         protected abstract Button Add_new_button { get; }
         protected abstract Button Save_button { get; }
         protected abstract Button Delete_button { get; }
@@ -52,9 +49,12 @@ namespace Veterinary_CRUD_App.Base_Forms
         protected abstract Button Edit_Button { get; }
         protected abstract TabPage List_tab_page { get; }
         protected abstract TabPage Details_tab_page { get; }
-        protected abstract DataGridView DataGridView_Main { get; set; }
-        protected virtual DataGridView? DataGridView_Details { get; set; }
+        protected abstract DataGridView Data_Grid_View_Main { get; set; }
+        protected virtual DataGridView? Data_Grid_View_Details { get; set; }
         protected abstract DateTimePicker? Date_Time_Picker { get; set; }
+        protected abstract MaterialLabel? Label_Date_Time_Picker_Mask { get; }
+        protected abstract MaterialTextBox2 ID_Text_Box_Mask { get; }
+        protected abstract NumericUpDown Numeric_Up_Down_ID_Of_Item { get; }
 
         // Event values
 
@@ -105,20 +105,29 @@ namespace Veterinary_CRUD_App.Base_Forms
             Utilities.Set_Double_Buffered_Recursively(form, true);
             Refresh_Data_Grid_View_Theme();
             Date_Time_Picker_Mask_Value_Changed(this, EventArgs.Empty);
+            Numeric_Up_Down_Mask_Value_Changed(this, EventArgs.Empty);
         }
 
         // Subscribe buttons to events # OVERRIDEN IN THE DERIVED CLASSES
         protected virtual void Subscribe_Button_Clicks_To_Invoking_Calls()
         {
+            // Buttons
             Search_Button.Click += Button_Search_Click;
-            Search_Text_Box.KeyDown += TextBox_Search_KeyDown;
+            Search_Text_Box.KeyDown += Text_Box_Search_Key_Down;
             Add_new_button.Click += Button_Add_New_Click;
             Edit_Button.Click += Edit_Button_Click;
             Save_button.Click += Button_Save_Click;
             Delete_button.Click += Button_Delete_Click;
             Cancel_button.Click += Button_Cancel_Click;
+
+            // UI
+            Numeric_Up_Down_ID_Of_Item.ValueChanged += Numeric_Up_Down_Mask_Value_Changed;
             Theme_Manager.Theme_Or_Color_Change += Refresh_Data_Grid_View_Theme;
-            DataGridView_Main.CellFormatting += Data_Grid_View_Cell_Formatting;
+            Data_Grid_View_Main.CellFormatting += Data_Grid_View_Cell_Formatting;
+            if (Data_Grid_View_Details != null)
+            {
+                Data_Grid_View_Details.CellFormatting += Data_Grid_View_Cell_Formatting;
+            }
             if (Label_Date_Time_Picker_Mask != null)
             {
                 Label_Date_Time_Picker_Mask.Click += Label_Date_Time_Picker_Mask_Click;
@@ -127,24 +136,28 @@ namespace Veterinary_CRUD_App.Base_Forms
             {
                 Date_Time_Picker.ValueChanged += Date_Time_Picker_Mask_Value_Changed;
             }
-            if (DataGridView_Details != null)
-            {
-                DataGridView_Details.CellFormatting += Data_Grid_View_Cell_Formatting;
-            }
         }
 
         // Unsubscribe buttons from events # OVERRIDEN IN THE DERIVED CLASSES
         protected virtual void Unsubscribe_Button_Clicks_To_Invoking_Calls()
         {
+            // Buttons
             Search_Button.Click -= Button_Search_Click;
-            Search_Text_Box.KeyDown -= TextBox_Search_KeyDown;
+            Search_Text_Box.KeyDown -= Text_Box_Search_Key_Down;
             Add_new_button.Click -= Button_Add_New_Click;
             Edit_Button.Click -= Edit_Button_Click;
             Save_button.Click -= Button_Save_Click;
             Delete_button.Click -= Button_Delete_Click;
             Cancel_button.Click -= Button_Cancel_Click;
+
+            // UI
             Theme_Manager.Theme_Or_Color_Change -= Refresh_Data_Grid_View_Theme;
-            DataGridView_Main.CellFormatting -= Data_Grid_View_Cell_Formatting;
+            Numeric_Up_Down_ID_Of_Item.ValueChanged -= Numeric_Up_Down_Mask_Value_Changed;
+            Data_Grid_View_Main.CellFormatting -= Data_Grid_View_Cell_Formatting;
+            if (Data_Grid_View_Details != null)
+            {
+                Data_Grid_View_Details.CellFormatting -= Data_Grid_View_Cell_Formatting;
+            }
             if (Label_Date_Time_Picker_Mask != null)
             {
                 Label_Date_Time_Picker_Mask.Click -= Label_Date_Time_Picker_Mask_Click;
@@ -152,10 +165,6 @@ namespace Veterinary_CRUD_App.Base_Forms
             if (Date_Time_Picker != null)
             {
                 Date_Time_Picker.ValueChanged -= Date_Time_Picker_Mask_Value_Changed;
-            }
-            if (DataGridView_Details != null)
-            {
-                DataGridView_Details.CellFormatting -= Data_Grid_View_Cell_Formatting;
             }
         }
 
@@ -180,7 +189,7 @@ namespace Veterinary_CRUD_App.Base_Forms
         }
 
         // TextBox search
-        private void TextBox_Search_KeyDown(object? sender, KeyEventArgs args)
+        private void Text_Box_Search_Key_Down(object? sender, KeyEventArgs args)
         {
             if (args.KeyCode == Keys.Enter)
             {
@@ -191,9 +200,10 @@ namespace Veterinary_CRUD_App.Base_Forms
         // Button add a new item
         private void Button_Add_New_Click(object? sender, EventArgs args)
         {
-            Show_Details_Tab_Page(Messages.Add_new_text);
-
             Add_New_Event?.Invoke(this, EventArgs.Empty);
+
+            Show_Details_Tab_Page(Messages.Add_new_text);
+            Hide_Data_Grid_View_Details();
         }
 
         // Button edit a new item
@@ -204,6 +214,7 @@ namespace Veterinary_CRUD_App.Base_Forms
             if (cargs.Cancel) return;
 
             Show_Details_Tab_Page(Messages.Edit_text);
+            Show_Data_Grid_View_Details();
         }
 
         // Button save changes
@@ -246,6 +257,8 @@ namespace Veterinary_CRUD_App.Base_Forms
         protected void Raise_Open_Form_Event(Form_Open_Request_Event_Args args)
         {
             Open_Form_Event?.Invoke(args);
+
+            Show_List_Tab_Page();
         }
 
         // Raise a event to delete an item from another form # CALLED IN THE DERIVED CLASS
@@ -260,30 +273,11 @@ namespace Veterinary_CRUD_App.Base_Forms
             return Validate_Combo_Box_Selection_Event?.Invoke(combo_box) ?? false;
         }
 
-        private void Label_Date_Time_Picker_Mask_Click(object? sender, EventArgs e)
-        {
-            // When we click on the mask select the element below it aka here we select the date time picker underneath it
-            if (Date_Time_Picker != null)
-            {
-                Date_Time_Picker.Select();
-                SendKeys.Send("%{DOWN}");
-            }
-        }
-
-        // Event handler for when Date time Start value is changed
-        private void Date_Time_Picker_Mask_Value_Changed(object? sender, EventArgs e)
-        {
-            // Update the label start mask text
-            if (Label_Date_Time_Picker_Mask != null)
-            {
-                Label_Date_Time_Picker_Mask.Text = Date_Time_Picker?.Text;
-            }
-        }
-
         // Event functions ---------------------------------------------------------------------------------------------------
 
         // UI manipulation functions -----------------------------------------------------------------------------------------
 
+        // Hide all controls in a Tab Page
         public static void Hide_Content(TabPage page)
         {
             foreach (Control control in page.Controls)
@@ -292,6 +286,7 @@ namespace Veterinary_CRUD_App.Base_Forms
             }
         }
 
+        // Show all controls in a Tab Page
         public static void Show_Content(TabPage page)
         {
             foreach (Control control in page.Controls)
@@ -300,7 +295,7 @@ namespace Veterinary_CRUD_App.Base_Forms
             }
         }
 
-        // Show the list tab page on the main tab control aka the main tab
+        // Show the list Tab Page on the main Tab Control aka the main tab
         public void Show_List_Tab_Page()
         {
             if (Main_Tab_Control.SelectedTab != List_tab_page)
@@ -317,7 +312,7 @@ namespace Veterinary_CRUD_App.Base_Forms
             }
         }
 
-        // Show the details tab page on the main tab control aka the edit page tab
+        // Show the details Tab Page on the main Tab Control aka the edit page tab
         public void Show_Details_Tab_Page(string title = "")
         {
             if (Main_Tab_Control.SelectedTab != Details_tab_page)
@@ -337,7 +332,7 @@ namespace Veterinary_CRUD_App.Base_Forms
             Details_tab_page.Text = title;
         }
 
-        // Hide Columns in the data grid view, that we don't care about
+        // Hide Columns in the Data Grid View, that we don't care about
         public void Hide_Data_Grid_View_Columns(DataGridView target_data_grid_view, IEnumerable<string> column_names)
         {
             foreach (var column_name in column_names)
@@ -349,35 +344,61 @@ namespace Veterinary_CRUD_App.Base_Forms
             }
         }
 
-        // Show a data grid view
-        public void Show_Data_Grid_View()
+        // Select the Date Time Picker when the Label mask is clicked
+        private void Label_Date_Time_Picker_Mask_Click(object? sender, EventArgs e)
+        {
+            // When we click on the mask select the element below it aka here we select the Date Time Picker underneath it
+            if (Date_Time_Picker != null)
+            {
+                Date_Time_Picker.Select();
+                SendKeys.Send("%{DOWN}");
+            }
+        }
+
+        // Set the value of the Date Time Picker to the Label mask
+        private void Date_Time_Picker_Mask_Value_Changed(object? sender, EventArgs e)
+        {
+            if (Label_Date_Time_Picker_Mask != null)
+            {
+                Label_Date_Time_Picker_Mask.Text = Date_Time_Picker?.Text;
+            }
+        }
+
+        // Set the value of the Numeric Up Down to the Text Box Mask
+        private void Numeric_Up_Down_Mask_Value_Changed(object? sender, EventArgs e)
+        {
+            ID_Text_Box_Mask.Text = Numeric_Up_Down_ID_Of_Item.Value.ToString();
+        }
+
+        // Show a Data Grid View
+        public void Show_Data_Grid_View_Details()
         {
             I_details_data_grid_view?.Show();
         }
 
-        // Hide a data grid view
-        public void Hide_Data_Grid_View()
+        // Hide a Data Grid View and clear its selection
+        public void Hide_Data_Grid_View_Details()
         {
             I_details_data_grid_view?.Hide();
             I_details_data_grid_view?.ClearSelection();
         }
 
-        // Refresh the data grid view theme
+        // Refresh the Data Grid View theme
         private void Refresh_Data_Grid_View_Theme()
         {
-            Apply_Theme_To_DataGridView(DataGridView_Main);
-            Apply_Theme_To_DataGridView(DataGridView_Details);
+            Apply_Theme_To_Data_Grid_View(Data_Grid_View_Main);
+            Apply_Theme_To_Data_Grid_View(Data_Grid_View_Details);
         }
 
-        // Apply the theme to the data grid view
-        private void Apply_Theme_To_DataGridView(DataGridView? data_grid_view)
+        // Apply the theme to the Data Grid View
+        private void Apply_Theme_To_Data_Grid_View(DataGridView? data_grid_view)
         {
             if (data_grid_view == null)
             {
                 return;
             }
 
-            // Set DataGridView's default styles using MaterialSkin colors
+            // Set Data Grid View default styles using Material Skin colors
             data_grid_view.DefaultCellStyle.Padding = new Padding(11, 11, 0, 11);
             data_grid_view.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
             data_grid_view.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -419,17 +440,17 @@ namespace Veterinary_CRUD_App.Base_Forms
         }
 
         //  If the cell information is more than 100 characters replace the rest with three dots
-        private void Data_Grid_View_Cell_Formatting(object? sender, DataGridViewCellFormattingEventArgs e)
+        private void Data_Grid_View_Cell_Formatting(object? sender, DataGridViewCellFormattingEventArgs args)
         {
             // Check if the cell value is not null and is a string
-            if (e.Value is string cell_value)
+            if (args.Value is string cell_value)
             {
                 if (cell_value.Length > 100)
                 {
                     // Truncate the string and add three dots at the end
-                    e.Value = cell_value[..100] + "…";
+                    args.Value = cell_value[..100] + "…";
 
-                    e.FormattingApplied = true; // Indicates the formatting was applied
+                    args.FormattingApplied = true; // Indicates the formatting was applied
                 }
             }
         }
@@ -469,7 +490,7 @@ namespace Veterinary_CRUD_App.Base_Forms
 
         protected override TabPage Details_tab_page => throw new NotImplementedException();
 
-        protected override DataGridView DataGridView_Main { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        protected override DataGridView Data_Grid_View_Main { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         protected override DateTimePicker? Date_Time_Picker
         {
@@ -484,6 +505,10 @@ namespace Veterinary_CRUD_App.Base_Forms
         }
 
         protected override MaterialLabel? Label_Date_Time_Picker_Mask => null;
+
+        protected override MaterialTextBox2 ID_Text_Box_Mask => throw new NotImplementedException();
+
+        protected override NumericUpDown Numeric_Up_Down_ID_Of_Item { get => throw new NotImplementedException(); }
 
         // ... override other members ...
 

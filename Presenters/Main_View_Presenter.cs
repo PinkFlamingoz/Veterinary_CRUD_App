@@ -22,6 +22,8 @@ namespace Veterinary_CRUD_App.Presenters
 
         private readonly Main_View main_view_instance;
 
+        private Form? current_active_form;
+
         // Constructor
         public Main_View_Presenter(IMain_View_Interface main_view_interface, IConfiguration configuration)
         {
@@ -106,6 +108,8 @@ namespace Veterinary_CRUD_App.Presenters
             form_instance.BringToFront();
             form_instance.Show();
 
+            current_active_form = form_instance;
+
             return form_instance;
         }
 
@@ -144,6 +148,15 @@ namespace Veterinary_CRUD_App.Presenters
             return presenter_cashe[Presenter_Type];
         }
 
+        // Reset the current form to show the list page tab when opening a new form
+        private void Reset_Current_Form()
+        {
+            if (current_active_form is IBase_View_Interface base_form)
+            {
+                base_form.Show_List_Tab_Page();
+            }
+        }
+
         // Helper functions for opening a form --------------------
 
         // Main method to show a form
@@ -180,24 +193,28 @@ namespace Veterinary_CRUD_App.Presenters
         // Open the pet view
         private void Show_Pet_View(object? sender, EventArgs e)
         {
+            Reset_Current_Form();
             Show_Form(typeof(Pet_Form), typeof(IPet_Repository_Interface), typeof(Pet_Form_Presenter));
         }
 
         // Open the owner view
         private void Show_Owner_View(object? sender, EventArgs e)
         {
+            Reset_Current_Form();
             Show_Form(typeof(Owner_Form), typeof(IOwner_Repository_Interface), typeof(Owner_Form_Presenter));
         }
 
         // Open the visit view
         private void Show_Visit_View(object? sender, EventArgs e)
         {
+            Reset_Current_Form();
             Show_Form(typeof(Visit_Form), typeof(IVisit_Repository_Interface), typeof(Visit_Form_Presenter));
         }
 
         // Open the homepage
         private void Show_Homepage_View(object? sender, EventArgs e)
         {
+            Reset_Current_Form();
             main_view_instance.Close_All_Forms_Except(typeof(Homepage));
             Get_Form_Instance(typeof(Homepage), main_view_instance);
         }
@@ -217,6 +234,12 @@ namespace Veterinary_CRUD_App.Presenters
 
             // Invoke the method even if e.Id is null
             load_method?.Invoke(presenter, new object[] { e.Id });
+
+            // Set the tab based on the opened form
+            if (main_view_interface.Form_To_Tab_Map.TryGetValue(e.Form_Type, out string? tab_page_name))
+            {
+                main_view_interface.Material_Tab_Control_Menu.SelectedTab = main_view_interface.Material_Tab_Control_Menu.TabPages[tab_page_name];
+            }
         }
 
         // Start with the homepage opened
