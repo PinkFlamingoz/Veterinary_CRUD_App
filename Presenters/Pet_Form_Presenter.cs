@@ -159,7 +159,7 @@ namespace Veterinary_CRUD_App.Presenters
         // If the user cancels the dialog or doesn't select an image, it returns an empty string.
         private static string Show_Image_Dialog()
         {
-            using (OpenFileDialog open_file_dialog = new OpenFileDialog())
+            using (OpenFileDialog open_file_dialog = new())
             {
                 open_file_dialog.Title = "Select a pet image";
                 open_file_dialog.Filter = image_filter;
