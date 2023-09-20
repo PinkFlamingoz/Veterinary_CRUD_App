@@ -274,7 +274,7 @@
             materialTextBox21_visit_id_mask.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialTextBox21_visit_id_mask.HideSelection = true;
             materialTextBox21_visit_id_mask.LeadingIcon = Properties.Resources.icons8_appointment_64;
-            materialTextBox21_visit_id_mask.Location = new Point(642, 48);
+            materialTextBox21_visit_id_mask.Location = new Point(833, 179);
             materialTextBox21_visit_id_mask.MaxLength = 32767;
             materialTextBox21_visit_id_mask.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox21_visit_id_mask.Name = "materialTextBox21_visit_id_mask";
@@ -343,7 +343,7 @@
             numericUpDown_visit_id.BorderStyle = BorderStyle.None;
             numericUpDown_visit_id.Enabled = false;
             numericUpDown_visit_id.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown_visit_id.Location = new Point(642, 48);
+            numericUpDown_visit_id.Location = new Point(833, 195);
             numericUpDown_visit_id.Name = "numericUpDown_visit_id";
             numericUpDown_visit_id.ReadOnly = true;
             numericUpDown_visit_id.Size = new Size(164, 32);

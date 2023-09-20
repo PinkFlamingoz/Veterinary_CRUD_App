@@ -178,6 +178,7 @@ namespace Veterinary_CRUD_App.Presenters
         // Add_New_Item hides the Data Grid View for item addition, while Edit_Item loads the selected item into the view and sets it up for editing.
         private void Add_New_Item(object? sender, EventArgs args)
         {
+            Clear_View();
             view_interface.I_is_edit = false;
         }
 
