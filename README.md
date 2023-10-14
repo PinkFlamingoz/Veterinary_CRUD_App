@@ -24,6 +24,8 @@ Application for creating, reading, updating and deleting data on a SQL server!
 - Delete feature for the database.
 - Resize application window.
 - Dashboard
+- Dark and Light mode
+- Different color schemes 
 
  ## How the app looks
 ![alt text](https://github.com/PinkFlamingoz/Veterinary_CRUD_App/blob/master/VCA1.png)
