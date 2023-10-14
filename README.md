@@ -8,7 +8,7 @@ Application for creating, reading, updating and deleting data on a SQL server!
       - ``` c#
             {
               "ConnectionStrings": {
-                "MyDatabase": "Enter server name; DataBase=My_Fancy_Store; Integrated Security=true; Encrypt=False;"
+                "MyDatabase": "Enter server name; DataBase=Animal_Database; Integrated Security=true; Encrypt=False;"
               }
             }
         ```
@@ -23,6 +23,7 @@ Application for creating, reading, updating and deleting data on a SQL server!
 - Edit feature for the database.
 - Delete feature for the database.
 - Resize application window.
+- Dashboard
 
  ## How the app looks
 ![alt text](https://github.com/PinkFlamingoz/Veterinary_CRUD_App/blob/master/VCA1.png)
